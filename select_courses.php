@@ -181,4 +181,3 @@ if (isset($_POST['enroll']) && $selected_course && $selected_section) {
 
 </body>
 </html>
-assss
