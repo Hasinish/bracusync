@@ -19,7 +19,7 @@ if (mysqli_num_rows($result) === 1) {
         $_SESSION['username'] = $user['username'];
         $_SESSION['email'] = $user['email'];
         $_SESSION['user_id'] = $user['user_id'];
-        header("Location: /BracuSync/select_courses.php");
+        header("Location: /BracuSync/index.php");
         exit();
     } else {  
         $_SESSION['login_error'] = "Incorrect username or password!";
