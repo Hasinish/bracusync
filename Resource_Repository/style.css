@@ -1,0 +1,153 @@
+/* General Reset & Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+/* Header */
+header {
+    background-color: #081b29;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+header h1 {
+    margin-bottom: 10px;
+    font-size: 28px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+/* Main Content */
+main {
+    max-width: 1000px;
+    margin: 30px auto;
+    padding: 0 20px;
+}
+
+/* Search Section */
+.search-section {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 30px;
+    
+}
+.search-section form{
+    width: 100% ;
+  
+}
+.search-section input {
+    /* flex: 1; */
+    padding: 10px;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+.search-section button {
+    padding: 10px 20px;
+    background-color: #0ef;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.search-section button:hover {
+    background-color: #0ef;
+}
+
+/* Resources Table */
+.resources-section h2,
+.upload-section h2 {
+    margin-bottom: 15px;
+    color: #081b29;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 40px;
+}
+
+table th, table td {
+    padding: 12px;
+    border: 1px solid #ccc;
+    text-align: center;
+}
+
+table th {
+    background-color: #0ef;
+    color: #081b29;
+}
+
+table a {
+    color: #0077cc;
+    text-decoration: none;
+}
+
+table a:hover {
+    text-decoration: underline;
+}
+
+/* Upload Form */
+.upload-section{
+    /* border: solid; */
+    margin-bottom: 40px;
+}
+.upload-section form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    /* border: solid; */
+}
+
+.upload-section input[type="text"],
+.upload-section textarea,
+.upload-section input[type="file"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+}
+
+.upload-section button {
+    align-self: start;
+    padding: 10px 20px;
+    background-color: #0ef;
+    border: none;
+    border-radius: 4px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.upload-section button:hover {
+    background-color: #00c3c3;
+}
