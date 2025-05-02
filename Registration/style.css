@@ -24,6 +24,7 @@ body{
     border: 2px solid #0ef;
     box-shadow: 0 0 25px #0ef;
     overflow: hidden;
+    backdrop-filter: blur(10px);
 }
 
 .wrapper .form-box{
@@ -208,4 +209,36 @@ body{
     transform: rotate(-10deg) skewY(-40deg);
     /* transform: rotate(0) skewY(0); */
     transform-origin: bottom left;
+}
+
+.video-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    z-index: -2; /* lower than the overlay */
+    pointer-events: none;
+}
+
+.video-background iframe {
+    position: absolute;
+    top: -10%;
+    left: -10%;
+    width: 120vw;
+    height: 120vh;
+    pointer-events: none;
+    border: none;
+}
+
+.video-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6); /* Adjust opacity for darkness */
+    z-index: -1; /* higher than video, lower than everything else */
+    pointer-events: none;
 }

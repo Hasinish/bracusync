@@ -23,6 +23,7 @@ body{
     border: 2px solid #0ef;
     box-shadow: 0 0 25px #0ef;
     overflow: hidden;
+    backdrop-filter: blur(10px);
 }
 
 .wrapper .form-box{
@@ -203,3 +204,34 @@ body{
     transform-origin: bottom right;
 }
 
+.video-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.video-background iframe {
+    position: absolute;
+    top: -10%;    /* Shift up slightly to crop top */
+    left: -10%;   /* Shift left slightly to crop left edge */
+    width: 120vw; /* Zoom in (larger than viewport) */
+    height: 120vh;
+    pointer-events: none;
+    border: none;
+}
+
+.video-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6); /* Adjust the opacity here */
+    z-index: -1; /* Same as the video, but layered on top of it */
+    pointer-events: none;
+}

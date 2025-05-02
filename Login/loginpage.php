@@ -10,6 +10,17 @@
 
 </head>
 <body>
+    <div class="video-background">
+        <iframe 
+            src="https://www.youtube.com/embed/tthY4pJqfEw?autoplay=1&mute=1&controls=0&showinfo=0&modestbranding=1&rel=0&loop=1&playlist=tthY4pJqfEw&playsinline=1" 
+            frameborder="0" 
+            allow="autoplay; fullscreen" 
+            allowfullscreen>
+        </iframe>
+    </div>
+    <!-- Overlay for darkening the video -->
+    <div class="video-overlay"></div>
+
     <div class="wrapper">
         <span class="bg"></span>
         
