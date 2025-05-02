@@ -31,7 +31,7 @@ if ($selected_course) {
 
 // Fetch section rows
 if ($selected_course && $selected_section) {
-    $details_query = "SELECT * FROM sections WHERE course_code = '$selected_course' AND section = '$selected_section'";
+    $details_query = "SELECT * FROM class_schedule cs join sections s ON s.section_id=cs.section_id WHERE course_code = '$selected_course' AND section = '$selected_section'";
     $details_result = mysqli_query($conn, $details_query);
 }
 
