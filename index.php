@@ -81,7 +81,7 @@
 
     <div class="container">
     
-        <h1>Welcome, <?php echo htmlspecialchars($_SESSION['username']); ?> to BracuSync!</h1>
+        <h1>Welcome, <?php echo ($_SESSION['username']); ?> to BracuSync!</h1>
         <p>This is a simple and secure platform for students to log in, register, and access services easily. Get started by registering a new account or logging in if you're already a member.</p>
         <a href="/Registration/register.html" class="btn">Get Started</a>
     </div>

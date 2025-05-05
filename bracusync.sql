@@ -77,7 +77,7 @@ CREATE TABLE `class_schedule` (
   PRIMARY KEY (`schedule_id`),
   UNIQUE KEY `unique_schedule` (`section_id`,`day`,`start_time`,`end_time`,`room`),
   CONSTRAINT `class_schedule_ibfk_1` FOREIGN KEY (`section_id`) REFERENCES `sections` (`section_id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=40959 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=37344 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -306,7 +306,7 @@ CREATE TABLE `resources` (
   `date` date NOT NULL,
   `user_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`resource_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -315,6 +315,7 @@ CREATE TABLE `resources` (
 
 LOCK TABLES `resources` WRITE;
 /*!40000 ALTER TABLE `resources` DISABLE KEYS */;
+INSERT INTO `resources` VALUES (4,'BBA101','Lecture Sheet 1','asdf','https://www.youtube.com/watch?v=SLFi_HvAG28','2025-05-03',12),(5,'BBA101','Lecture Sheet 1','asdf','https://www.youtube.com/watch?v=SLFi_HvAG28','2025-05-03',12),(6,'CSE101','MSI CSE110 lectures','asdasdasd','https://youtu.be/aZxGX65Uivc','2025-05-03',12);
 /*!40000 ALTER TABLE `resources` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -331,7 +332,7 @@ CREATE TABLE `sections` (
   `faculty` varchar(50) NOT NULL,
   `section` int(11) NOT NULL,
   PRIMARY KEY (`section_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4096 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2778 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -386,7 +387,7 @@ CREATE TABLE `user` (
   PRIMARY KEY (`user_id`),
   UNIQUE KEY `email` (`email`),
   UNIQUE KEY `id_no` (`id_no`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -395,7 +396,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (12,'Hasin','hasinishrak2015@gmail.com','$2y$10$YtLyVXRxiaO8sY0U7YdwweJjJPQEHtkr0jZAQqfqeRfoLTB5fKcCK','Offline',NULL);
+INSERT INTO `user` VALUES (12,'Hasin','hasinishrak2015@gmail.com','$2y$10$YtLyVXRxiaO8sY0U7YdwweJjJPQEHtkr0jZAQqfqeRfoLTB5fKcCK','Offline',NULL),(13,'Namira','namira@gmail.com','$2y$10$/jlZowtm7o7lahzmRJE2Du7uLBdjq5PGWkVCtIidneyATVoLKWT5q','Offline',NULL);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -408,4 +409,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-05-03  2:50:22
+-- Dump completed on 2025-05-05 16:07:37

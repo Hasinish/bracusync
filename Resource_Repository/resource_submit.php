@@ -17,11 +17,11 @@ $sql = "INSERT INTO resources (course_name, resource_name, description, resource
         VALUES ('$courseName', '$resourceName', '$description', '$resourceLink', '$date', '$user_id')";
 
 if (mysqli_query($conn, $sql)) {
-    header("Location: resource.php"); 
+    header("Location: resourcepage.php"); 
     exit();
 } else {
     echo "Error: " . mysqli_error($conn);
 }
 
-$conn->close();
+mysqli_close($conn);
 ?>

@@ -6,32 +6,31 @@ $username = "";
 $email = "";
 $password = "";
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Save data into variables
-    $username = $_POST['username'];
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-    $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-    // Check if email already exists
-    $query = "SELECT * FROM user WHERE email = '$email'";
-    $result = mysqli_query($conn, $query);
+$username = $_POST['username'];
+$email = $_POST['email'];
+$password = $_POST['password'];
+$hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-    if (mysqli_num_rows($result) > 0) {
-        $error = "Email already registered!";
+// Check if email already exists
+$query = "SELECT * FROM user WHERE email = '$email'";
+$result = mysqli_query($conn, $query);
+
+if (mysqli_num_rows($result) > 0) {
+    $error = "Email already registered!";
+} else {
+    // Insert user into database
+    $sql = "INSERT INTO user (username, email, password) VALUES ('$username', '$email', '$hashedPassword')";
+    if (mysqli_query($conn, $sql)) {
+        header("Location: ../Login/loginpage.php"); 
+        exit();
     } else {
-        // Insert user into database
-        $sql = "INSERT INTO user (username, email, password) VALUES ('$username', '$email', '$hashedPassword')";
-        if (mysqli_query($conn, $sql)) {
-            header("Location: ../Login/loginpage.php"); 
-            exit();
-        } else {
-            $error = "Error: " . mysqli_error($conn);
-        }
+        $error = "Error: " . mysqli_error($conn);
     }
-
-    mysqli_close($conn);
 }
+
+mysqli_close($conn);
+
 ?>
 
 
