@@ -6,36 +6,32 @@ $username = "";
 $email = "";
 $password = "";
 
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $username = isset($_POST['username']) ? trim($_POST['username']) : '';
+    $email = isset($_POST['email']) ? trim($_POST['email']) : '';
+    $password = isset($_POST['password']) ? $_POST['password'] : '';
+    $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-$username = $_POST['username'];
-$email = $_POST['email'];
-$password = $_POST['password'];
-$hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+    // Check if email already exists
+    $query = "SELECT * FROM user WHERE email = '$email'";
+    $result = mysqli_query($conn, $query);
 
-// Check if email already exists
-$query = "SELECT * FROM user WHERE email = '$email'";
-$result = mysqli_query($conn, $query);
-
-if (mysqli_num_rows($result) > 0) {
-    $error = "Email already registered!";
-} else {
-    // Insert user into database
-    $sql = "INSERT INTO user (username, email, password) VALUES ('$username', '$email', '$hashedPassword')";
-    if (mysqli_query($conn, $sql)) {
-        header("Location: ../Login/loginpage.php"); 
-        exit();
+    if (mysqli_num_rows($result) > 0) {
+        $error = "Email already registered!";
     } else {
-        $error = "Error: " . mysqli_error($conn);
+        // Insert user into database
+        $sql = "INSERT INTO user (username, email, password) VALUES ('$username', '$email', '$hashedPassword')";
+        if (mysqli_query($conn, $sql)) {
+            header("Location: ../Login/loginpage.php"); 
+            exit();
+        } else {
+            $error = "Error: " . mysqli_error($conn);
+        }
     }
 }
 
 mysqli_close($conn);
-
 ?>
-
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -54,7 +50,7 @@ mysqli_close($conn);
             allowfullscreen>
         </iframe>
     </div>
-    <!-- Overlay for darkening the video -->
+
     <div class="video-overlay"></div>
     <div class="wrapper">
         <span class="bg"></span>
@@ -63,19 +59,26 @@ mysqli_close($conn);
             <h2>Sign Up</h2>
             <form method="POST">
                 <div class="input-box">
-                    <input type="text" name="username" required value="<?php echo htmlspecialchars($username); ?>">
+                    <input type="text" name="username" required
+                        pattern="[A-Z][a-z]*"
+                        title="Start with a capital letter, no spaces (e.g., John)"
+                        value="<?php echo htmlspecialchars($username); ?>">
                     <label>Username</label>
                     <i class='bx bxs-user'></i>
                 </div>
 
                 <div class="input-box">
-                    <input type="text" name="email" required value="<?php echo htmlspecialchars($email); ?>">
+                    <input type="email" name="email" required 
+                        value="<?php echo htmlspecialchars($email); ?>">
                     <label>Email</label>
                     <i class='bx bxs-envelope'></i>
                 </div>
 
                 <div class="input-box">
-                    <input type="text" name="password" required value="<?php echo htmlspecialchars($password); ?>">
+                    <input type="password" name="password" required
+                        pattern="(?=.*[0-9])(?=.*[\W_]).{8,}" 
+                        title="At least 8 characters, with a number and special character"
+                        value="<?php echo htmlspecialchars($password); ?>">
                     <label>Password</label>
                     <i class='bx bxs-lock-alt'></i>
                 </div>

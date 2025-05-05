@@ -206,7 +206,7 @@ body{
     height: 600px;
     background: linear-gradient(#081b29,#0ef);
     border-bottom: 3px solid #0ef;
-    transform: rotate(-10deg) skewY(-40deg);
+    transform: rotate(-12deg) skewY(-40deg);
     /* transform: rotate(0) skewY(0); */
     transform-origin: bottom left;
 }

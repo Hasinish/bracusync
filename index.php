@@ -71,13 +71,13 @@
 
     
     <nav>
-    <a href="/index.php">Home</a>
-    
+    <a href="index.php">Home</a>
+    <a href="Profile_dashboard/profile.php">Profile</a>
     <a href="lost_and_found/lost_and_foundpage.php">Lost And Found</a>
     <a href="Resource_Repository/resourcepage.php">Resource Repository</a>
     <a href="logout.php">Logout</a>
     
-    </nav>
+    </nav>  
 
     <div class="container">
     

@@ -39,28 +39,6 @@ LOCK TABLES `admin` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `class_group`
---
-
-DROP TABLE IF EXISTS `class_group`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `class_group` (
-  `group_id` int(11) NOT NULL,
-  PRIMARY KEY (`group_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `class_group`
---
-
-LOCK TABLES `class_group` WRITE;
-/*!40000 ALTER TABLE `class_group` DISABLE KEYS */;
-/*!40000 ALTER TABLE `class_group` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `class_schedule`
 --
 
@@ -148,33 +126,6 @@ INSERT INTO `enrollments` VALUES (991,12,'2025-05-03'),(1021,12,'2025-05-03'),(1
 UNLOCK TABLES;
 
 --
--- Table structure for table `group_members`
---
-
-DROP TABLE IF EXISTS `group_members`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `group_members` (
-  `group_id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `join_date` date NOT NULL,
-  PRIMARY KEY (`group_id`,`user_id`),
-  KEY `group user` (`user_id`),
-  CONSTRAINT `group user` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`),
-  CONSTRAINT `group_user` FOREIGN KEY (`group_id`) REFERENCES `class_group` (`group_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `group_members`
---
-
-LOCK TABLES `group_members` WRITE;
-/*!40000 ALTER TABLE `group_members` DISABLE KEYS */;
-/*!40000 ALTER TABLE `group_members` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `group_post`
 --
 
@@ -186,11 +137,11 @@ CREATE TABLE `group_post` (
   `content` text NOT NULL,
   `timestamp` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `user_id` int(11) NOT NULL,
-  `group_id` int(11) NOT NULL,
+  `section_id` int(11) NOT NULL,
   PRIMARY KEY (`post_id`),
   KEY `poster` (`user_id`),
-  KEY `grouper` (`group_id`),
-  CONSTRAINT `grouper` FOREIGN KEY (`group_id`) REFERENCES `class_group` (`group_id`),
+  KEY `grouper` (`section_id`),
+  CONSTRAINT `grouper` FOREIGN KEY (`section_id`) REFERENCES `sections` (`section_id`),
   CONSTRAINT `poster` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -215,9 +166,10 @@ CREATE TABLE `instructor` (
   `user_id` int(11) NOT NULL AUTO_INCREMENT,
   `department` varchar(100) NOT NULL,
   `designation` varchar(50) NOT NULL,
+  `initial` varchar(10) DEFAULT NULL,
   PRIMARY KEY (`user_id`),
   CONSTRAINT `instructor user` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -226,6 +178,7 @@ CREATE TABLE `instructor` (
 
 LOCK TABLES `instructor` WRITE;
 /*!40000 ALTER TABLE `instructor` DISABLE KEYS */;
+INSERT INTO `instructor` VALUES (17,'CSE','Professor','MUF');
 /*!40000 ALTER TABLE `instructor` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -248,7 +201,7 @@ CREATE TABLE `lost_and_found` (
   PRIMARY KEY (`item_id`),
   KEY `LAF` (`user_id`),
   CONSTRAINT `LAF` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -257,6 +210,7 @@ CREATE TABLE `lost_and_found` (
 
 LOCK TABLES `lost_and_found` WRITE;
 /*!40000 ALTER TABLE `lost_and_found` DISABLE KEYS */;
+INSERT INTO `lost_and_found` VALUES (8,'2025-05-05','14:13:00','Umbrella','asdasd','asdasd','uploads/1746440044_istockphoto-636379014-612x612.jpg',12);
 /*!40000 ALTER TABLE `lost_and_found` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -358,7 +312,7 @@ CREATE TABLE `student` (
   `major` varchar(50) NOT NULL,
   PRIMARY KEY (`user_id`),
   CONSTRAINT `student user` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -367,6 +321,7 @@ CREATE TABLE `student` (
 
 LOCK TABLES `student` WRITE;
 /*!40000 ALTER TABLE `student` DISABLE KEYS */;
+INSERT INTO `student` VALUES (12,'Fall-2022','CSE'),(13,'Fall-2022','CSE');
 /*!40000 ALTER TABLE `student` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -387,7 +342,7 @@ CREATE TABLE `user` (
   PRIMARY KEY (`user_id`),
   UNIQUE KEY `email` (`email`),
   UNIQUE KEY `id_no` (`id_no`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -396,7 +351,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (12,'Hasin','hasinishrak2015@gmail.com','$2y$10$YtLyVXRxiaO8sY0U7YdwweJjJPQEHtkr0jZAQqfqeRfoLTB5fKcCK','Offline',NULL),(13,'Namira','namira@gmail.com','$2y$10$/jlZowtm7o7lahzmRJE2Du7uLBdjq5PGWkVCtIidneyATVoLKWT5q','Offline',NULL);
+INSERT INTO `user` VALUES (12,'Hasin','hasinishrak2015@gmail.com','$2y$10$YtLyVXRxiaO8sY0U7YdwweJjJPQEHtkr0jZAQqfqeRfoLTB5fKcCK','Offline',22201133),(13,'Namira','namira@gmail.com','$2y$10$/jlZowtm7o7lahzmRJE2Du7uLBdjq5PGWkVCtIidneyATVoLKWT5q','Offline',22201191),(15,'Tanim','tanim@gmail.com','$2y$10$EwhLp.YtUCCrtlEbpJKZT.KK2oeF0t8lZ3OSqlHf6EfEP4739ADMS','Offline',NULL),(16,'','','$2y$10$slP2dYUHzxMLgQtVXBKFiuUMda.WwAKqgRsuV0TlJvzZa5T.E/4d2','Offline',NULL),(17,'Nafi','nafi@gmail.com','$2y$10$FL3OlVvdmEkdS4ojYbbENe0clHTHq5Y9uxil4danS.i7280u6fiqW','Offline',12345);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -409,4 +364,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-05-05 16:07:37
+-- Dump completed on 2025-05-05 21:53:18
