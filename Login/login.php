@@ -2,11 +2,13 @@
 session_start();
 require_once '../connect.php';
 
-$username = $_POST['username'];
+$email = $_POST['email'];
 $password = $_POST['password'];
 
-$sql = "SELECT * FROM user WHERE username = '$username'";
+$sql = "SELECT * FROM user WHERE email = '$email'";
 $result = mysqli_query($conn, $sql);
+
+
 
 if (mysqli_num_rows($result) === 1) {
     $user = mysqli_fetch_assoc($result);
@@ -15,9 +17,9 @@ if (mysqli_num_rows($result) === 1) {
         $_SESSION['username'] = $user['username'];
         $_SESSION['email'] = $user['email'];
         $_SESSION['user_id'] = $user['user_id'];
-        $_SESSION['status'] = $user['status']; // Store the status in the session
+        $_SESSION['status'] = $user['status']; 
 
-        // Set status to Online if it was not "Hidden"
+        // hidden status
         if ($user['status'] !== 'Hidden') {
             $update_status = "UPDATE user SET status = 'Online' WHERE user_id = " . $user['user_id'];
             mysqli_query($conn, $update_status);

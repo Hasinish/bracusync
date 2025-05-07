@@ -177,6 +177,7 @@ if (isset($_POST['enroll']) && $selected_course && $selected_section) {
             <button type="submit" name="enroll">Enroll</button>
         <?php endif; ?>
     </form>
+    <a href="index.php">Home</a>
 </div>
 
 </body>

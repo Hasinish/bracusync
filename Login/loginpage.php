@@ -30,8 +30,8 @@
             <form action="login.php" method="POST">
 
                 <div class="input-box">
-                    <input type="text" name="username" required>
-                    <label >Username</label>
+                    <input type="email" name="email" required>
+                    <label >Email</label>
                     <i class='bx bxs-user'></i>
                 </div>
 
