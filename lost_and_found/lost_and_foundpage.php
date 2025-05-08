@@ -13,7 +13,6 @@
 
   <!-- Header -->
   <header class="site-header">
-    <div class="container">
       <h1>Brac University Lost and Found</h1>
       <nav>
         <ul class="nav-links">
@@ -23,7 +22,6 @@
           <li><a href="#">Profile</a></li>
         </ul>
       </nav>
-    </div>
   </header>
 
   <!-- Report Form -->

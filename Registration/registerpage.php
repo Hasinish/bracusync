@@ -42,16 +42,16 @@ mysqli_close($conn);
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
-    <div class="video-background">
+    <!-- <div class="video-background">
         <iframe 
             src="https://www.youtube.com/embed/tthY4pJqfEw?autoplay=1&mute=1&controls=0&showinfo=0&modestbranding=1&rel=0&loop=1&playlist=tthY4pJqfEw&playsinline=1" 
             frameborder="0" 
             allow="autoplay; fullscreen" 
             allowfullscreen>
         </iframe>
-    </div>
+    </div> -->
 
-    <div class="video-overlay"></div>
+    <!-- <div class="video-overlay"></div> -->
     <div class="wrapper">
         <span class="bg"></span>
 

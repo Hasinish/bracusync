@@ -12,6 +12,7 @@ $result = mysqli_query($conn, $sql);
 
 if (mysqli_num_rows($result) === 1) {
     $user = mysqli_fetch_assoc($result);
+    
 
     if (password_verify($password, $user['password'])) {
         $_SESSION['username'] = $user['username'];
@@ -19,11 +20,11 @@ if (mysqli_num_rows($result) === 1) {
         $_SESSION['user_id'] = $user['user_id'];
         $_SESSION['status'] = $user['status']; 
 
-        // hidden status
-        if ($user['status'] !== 'Hidden') {
-            $update_status = "UPDATE user SET status = 'Online' WHERE user_id = " . $user['user_id'];
-            mysqli_query($conn, $update_status);
-        }
+        // // hidden status
+        // if ($user['status'] !== 'Hidden') {
+        //     $update_status = "UPDATE user SET status = 'Online' WHERE user_id = " . $user['user_id'];
+        //     mysqli_query($conn, $update_status);
+        // }
 
         header("Location: ../welcome__role_select/welcome.php");
         exit();
