@@ -1,6 +1,5 @@
 <?php session_start(); ?>
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,20 +10,16 @@
 </head>
 <body>
 
-  <!-- Header -->
   <header class="site-header">
       <h1>Brac University Lost and Found</h1>
       <nav>
-        <ul class="nav-links">
-          <li><a href="../index.php">Home</a></li>
-          <li><a href="../Resource_Repository/resourcepage.php">Resource Repository</a></li>
-          <li><a href="#">Messages</a></li>
-          <li><a href="#">Profile</a></li>
-        </ul>
+        <a href="../index.php">Home</a>
+        <a href="../Resource_Repository/resourcepage.php">Resource Repository</a>
+        <a href="#">Messages</a>
+        <a href="#">Profile</a>
       </nav>
   </header>
 
-  <!-- Report Form -->
   <main>
     <section class="report-section">
       <h2>Report Lost Item</h2>
@@ -46,7 +41,7 @@
         <input type="time" name="time" required>
 
         <label>Upload Picture</label>
-        <input type="file" name="item_image" accept="image/*"><br>
+        <input type="file" name="item_image" accept="image/*">
 
         <button type="submit">Submit Report</button>
       </form>
@@ -66,7 +61,6 @@
             <th>Images</th>
             <th>Reported By</th>
             <th>Action</th>
-
           </tr>
         </thead>
         <tbody>

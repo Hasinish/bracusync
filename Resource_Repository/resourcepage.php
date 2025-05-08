@@ -34,7 +34,7 @@
 
         <section class="search-section">
             <form method="GET">
-                <input type="text" name="search" placeholder="Search by Course Name or Resource Name" value="<?php echo isset($_GET['search']) ? htmlspecialchars($_GET['search']) : ''; ?>">
+                <input type="text" name="search" placeholder="Search by Course Name or Resource Name" value="<?= isset($_GET['search']) ? ($_GET['search']) : ''; ?>">
                 <button type="submit">Search</button>
             </form>
         </section>
@@ -53,9 +53,8 @@
                 </thead>
                 <tbody>
                 <?php
-                // Connect to DB
-                require_once '../connect.php';
-                // Fetch all resources
+                session_start();
+                require_once ('../connect.php');
 
                 $search = isset($_GET['search']) ? trim($_GET['search']) : '';
 
@@ -72,11 +71,12 @@
 
                 $sql .= " ORDER BY resources.date DESC";
                 
-                $result = $conn->query($sql);
+                $result = mysqli_query($conn, $sql);
 
-                if ($result->num_rows > 0) {
-                    while ($row = $result->fetch_assoc()) {
-                        echo "<tr>
+                if (mysqli_num_rows($result) != 0) {
+                    while ($row = mysqli_fetch_array($result)) {
+                        echo "
+                            <tr>
                                 <td>{$row['resource_name']}</td>
                                 <td>{$row['course_name']}</td>
                                 <td>{$row['username']}</td> 
@@ -85,10 +85,13 @@
                             </tr>";
                     }
                 } else {
-                    echo "<tr><td colspan='5'>No resources uploaded yet.</td></tr>";
+                    echo "
+                        <tr>
+                            <td colspan='5'>No resources uploaded yet.</td>
+                        </tr>";
                 }
 
-                 $conn->close();
+                mysqli_close($conn);
                 ?>
             </tbody>
             </table>

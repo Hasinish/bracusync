@@ -16,12 +16,9 @@ $user_id = $_SESSION['user_id'];
 $sql = "INSERT INTO resources (course_name, resource_name, description, resource_link, date, user_id )
         VALUES ('$courseName', '$resourceName', '$description', '$resourceLink', '$date', '$user_id')";
 
-if (mysqli_query($conn, $sql)) {
-    header("Location: resourcepage.php"); 
-    exit();
-} else {
-    echo "Error: " . mysqli_error($conn);
-}
+mysqli_query($conn, $sql);
+header("Location: resourcepage.php"); 
+
 
 mysqli_close($conn);
 ?>

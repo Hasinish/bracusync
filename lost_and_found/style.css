@@ -26,22 +26,20 @@ body {
   margin-bottom: 10px;
 }
 
-.nav-links {
+.site-header nav {
   display: flex;
   justify-content: center;
   gap: 30px;
-  list-style: none;
-  padding-bottom: 10px;
 }
 
-.nav-links a {
+.site-header a {
   color: white;
   text-decoration: none;
   font-size: 18px;
   font-weight: 600;
 }
 
-.nav-links a:hover {
+.site-header a:hover {
   text-decoration: underline;
 }
 
