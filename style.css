@@ -15,7 +15,7 @@ html, body {
 
 body {
     min-height: 100vh;
-    background: url('https://ceramicbangladesh.com/wp-content/uploads/2025/02/Asset-14_13_11zon.webp') no-repeat center/cover fixed;
+    background: url('https://ceramicbangladesh.com/wp-content/uploads/2025/02/Asset-14_13_11zon.webp') no-repeat center/cover;
     position: relative;
     overflow-x: hidden;
     display: flex;
@@ -28,14 +28,15 @@ body {
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: rgba(0, 0, 0, 0.6);
+    background: rgba(0, 0, 0, 0.6); 
     z-index: -1;
     pointer-events: none;
 }
 
 main {
-    flex: 1 0 auto;
+    flex: 1 0 auto; 
 }
+
 
 header {
     background: rgba(255, 255, 255, 0.1);
@@ -48,14 +49,14 @@ header {
 
 header h1 {
     font-size: 2.8rem;
-    color: #fff;
+    color: #fff; 
     letter-spacing: 1px;
     margin-bottom: 10px;
 }
 
 header p {
     font-size: 1.1rem;
-    color: #fff;
+    color: #fff; 
     font-weight: 400;
 }
 
@@ -64,7 +65,8 @@ nav {
     justify-content: center;
     gap: 20px;
     padding: 15px 0;
-    background: rgba(0, 0, 0, 0.6);
+    background: rgba(0, 0, 0, 0.6); 
+    
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     position: sticky;
     top: 0;
@@ -74,7 +76,7 @@ nav {
 
 nav a {
     text-decoration: none;
-    color: #fff;
+    color: #fff; 
     font-size: 1rem;
     font-weight: 500;
     padding: 8px 16px;
@@ -91,56 +93,39 @@ nav a::before {
     color: #0ef;
 }
 
-nav a[href="../index.php"]::before { content: '\f015'; }
-nav a[href="../Profile_dashboard/profile.php"]::before { content: '\f007'; }
-nav a[href="lost_and_foundpage.php"]::before { content: '\f002'; }
-nav a[href="../Resource_Repository/resourcepage.php"]::before { content: '\f15c'; }
-nav a[href="../logout.php"]::before { content: '\f2f5'; }
+nav a[href="index.php"]::before { content: '\f015'; }
+nav a[href="Profile_dashboard/profile.php"]::before { content: '\f007'; }
+nav a[href="lost_and_found/lost_and_foundpage.php"]::before { content: '\f002'; }
+nav a[href="Resource_Repository/resourcepage.php"]::before { content: '\f15c'; }
+nav a[href="logout.php"]::before { content: '\f2f5'; }
 
 nav a:hover {
-    background: #0ef;
+    background: #0ef; 
     color: #081b29;
     transform: translateY(-2px);
 }
 
 nav a:hover::before {
-    color: #081b29;
-}
-
-nav a.active {
-    border-bottom: 2px solid #0ef;
-    color: #0ef;
-}
-
-nav a.active::before {
-    color: #0ef;
+    color: #081b29; 
 }
 
 .container {
-    margin: 20px auto;
-    margin-bottom: 50px;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    border: 2px solid #0ef;
-    box-shadow: 0 0 25px #0ef;
+    width: 90%;
+    max-width: 800px;
+    margin: 40px auto;
+    background: rgba(255, 255, 255, 0.1); 
+    backdrop-filter: blur(10px); 
+    border: 2px solid #0ef; 
+    box-shadow: 0 0 25px #0ef; 
     border-radius: 15px;
     padding: 30px;
     text-align: center;
     animation: fadeInUp 0.7s ease-out 0.4s backwards;
 }
 
-.report-section {
-    width: 80%;
-    max-width: 800px;
-}
-
-.items-section {
-    width: 80%;
-}
-
 .container h1 {
     font-size: 2rem;
-    color: #fff;
+    color: #fff; /* White */
     margin-bottom: 15px;
     position: relative;
 }
@@ -149,108 +134,27 @@ nav a.active::before {
     content: '';
     width: 50px;
     height: 3px;
-    background: #0ef;
+    background: #0ef; /* Neon cyan */
     position: absolute;
     bottom: -10px;
     left: 50%;
     transform: translateX(-50%);
 }
 
-.card {
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 10px;
-    padding: 20px;
-    margin-bottom: 20px;
-    text-align: left;
-    animation: fadeInUp 0.7s ease-out 0.5s backwards;
-}
-
-.card p {
+.container p {
     font-size: 1rem;
-    color: #fff;
-    margin-bottom: 10px;
+    color: #fff; /* White */
+    margin-bottom: 25px;
     line-height: 1.6;
-}
-
-.report-form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    margin: 0 auto;
-}
-
-.report-form label {
-    font-size: 1rem;
-    color: #fff;
-    font-weight: 500;
-}
-
-.report-form input,
-.report-form textarea {
-    padding: 10px;
-    font-size: 1rem;
-    color: #fff;
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid #0ef;
-    border-radius: 5px;
-    transition: border-color 0.3s ease;
-}
-
-.report-form input:focus,
-.report-form textarea:focus {
-    outline: none;
-    border-color: #fff;
-}
-
-.report-form textarea {
-    resize: vertical;
-}
-
-.report-form button.btn {
-    margin-top: 10px;
-    align-self: center;
-}
-
-.routine-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 15px;
-}
-
-.routine-table th,
-.routine-table td {
-    padding: 10px;
-    text-align: left;
-    color: #fff;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.routine-table th {
-    background: rgba(0, 0, 0, 0.3);
-    font-weight: 600;
-}
-
-.routine-table td {
-    background: rgba(255, 255, 255, 0.05);
-}
-
-.routine-table a {
-    color: #0ef;
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-.routine-table a:hover {
-    color: #fff;
 }
 
 .btn {
     display: inline-block;
     padding: 12px 24px;
-    background: transparent;
-    border: 2px solid #0ef;
-    color: #fff;
-    border-radius: 40px;
+    background: transparent; /* Match login.css button style */
+    border: 2px solid #0ef; /* Neon cyan border */
+    color: #fff; /* White text */
+    border-radius: 40px; /* Match login.css button border-radius */
     font-size: 1rem;
     font-weight: 600;
     text-decoration: none;
@@ -266,10 +170,10 @@ nav a.active::before {
     top: -100%;
     left: 0;
     width: 100%;
-    height: 300%;
-    background: linear-gradient(#081b29, #0ef, #081b29, #0ef);
+    height: 300%; 
+    background: linear-gradient(#081b29, #0ef, #081b29, #0ef); 
     z-index: -1;
-    transition: top 0.5s ease;
+    transition: top 0.5s ease; 
 }
 
 .btn:hover {
@@ -277,18 +181,18 @@ nav a.active::before {
 }
 
 .btn:hover::before {
-    top: 0;
+    top: 0; 
 }
 
 .site-footer {
-    flex-shrink: 0;
+    flex-shrink: 0; 
     text-align: center;
     padding: 20px;
     background: rgba(0, 0, 0, 0.6);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px); 
     box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
     font-size: 0.9rem;
-    color: #fff;
+    color: #fff; 
     animation: fadeInUp 0.7s ease-out 0.6s backwards;
 }
 
@@ -337,18 +241,9 @@ nav a.active::before {
         font-size: 1.8rem;
     }
 
-    .routine-table th,
-    .routine-table td {
-        padding: 8px;
-        font-size: 0.9rem;
-    }
-
-    .report-form {
-        max-width: 100%;
-    }
-
     .site-footer {
         font-size: 0.8rem;
         padding: 15px;
     }
 }
+

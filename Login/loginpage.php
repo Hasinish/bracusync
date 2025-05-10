@@ -29,7 +29,7 @@
                 <div class="input-box">
                     <input type="email" name="email" placeholder=" ">
                     <label>Email</label>
-                    <i class='bx bxs-user'></i>
+                    <i class='bx bxs-envelope' style='color:#ffffff'  ></i>
                 </div>
 
                 <div class="input-box">

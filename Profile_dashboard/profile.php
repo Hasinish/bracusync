@@ -36,16 +36,19 @@ ORDER BY FIELD(cs.day, 'Sun','Mon','Tue','Wed','Thu','Fri','Sat'), cs.start_time
 
 $routine_result = mysqli_query($conn, $routine_sql);
 
-// Handle hide status toggle
-if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['hide_status'])) {
-    $new_status = $_POST['hide_status'] === 'on' ? 'Hidden' : 'Online';
-    $update_status_sql = "UPDATE user SET status = '$new_status' WHERE user_id = $user_id";
-    mysqli_query($conn, $update_status_sql);
-    
-    // Update session to remember the status
-    $_SESSION['status'] = $new_status;
+// Handle status dropdown
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['status'])) {
+    $new_status = $_POST['status'];
+    // Validate status value
+    if ($new_status === 'Online' || $new_status === 'Hidden') {
+        $update_status_sql = "UPDATE user SET status = '$new_status' WHERE user_id = $user_id";
+        mysqli_query($conn, $update_status_sql);
+        
+        // Update session to remember the status
+        $_SESSION['status'] = $new_status;
 
-    $user['status'] = $new_status; // Update local value
+        $user['status'] = $new_status; // Update local value
+    }
 } else {
     // Set status from session if available
     if (isset($_SESSION['status'])) {
@@ -55,90 +58,103 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['hide_status'])) {
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Profile Dashboard</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Dashboard — BracuSync</title>
     <link rel="stylesheet" href="profile.css">
 </head>
 <body>
+    <div class="bg-overlay"></div>
+    <main>
+        <nav>
+            <a href="../index.php">Home</a>
+            <a href="profile.php" class="active">Profile</a>
+            <a href="../lost_and_found/lost_and_foundpage.php">Lost And Found</a>
+            <a href="../Resource_Repository/resourcepage.php">Resource Repository</a>
+            <a href="../logout.php">Logout</a>
+        </nav>
 
-<div class="container">
-    <h1>Your Profile Dashboard</h1>
+        <div class="container">
+            <h1>Your Profile Dashboard</h1>
 
-    <div class="section">
-        <h2>User Info</h2>
-        <p><strong>Username:</strong> <?php echo htmlspecialchars($user['username']); ?></p>
-        <p><strong>Email:</strong> <?php echo htmlspecialchars($user['email']); ?></p>
-        <p><strong>ID No:</strong> <?php echo htmlspecialchars($user['id_no']); ?></p>
-        <p><strong>Status:</strong> <?php echo $user['status']; ?></p>
+            <div class="section card">
+                <h2>User Info</h2>
+                <p><strong>Username:</strong> <?php echo htmlspecialchars($user['username']); ?></p>
+                <p><strong>Email:</strong> <?php echo htmlspecialchars($user['email']); ?></p>
+                <p><strong>ID No:</strong> <?php echo htmlspecialchars($user['id_no']); ?></p>
 
-        <form method="POST" class="status-toggle">
-            <label>
-                <!-- Hidden input ensures value is always submitted -->
-                <input type="hidden" name="hide_status" value="off">
-                <input type="checkbox" name="hide_status" value="on" onchange="this.form.submit()" <?php if ($user['status'] === 'Hidden') echo 'checked'; ?>>
-                Hide my online status
-            </label>
-        </form>
+                <form method="POST" class="status-toggle">
+                    <label for="status"><strong>Status:</strong></label>
+                    <select name="status" id="status" onchange="this.form.submit()">
+                        <option value="Online" <?php if ($user['status'] === 'Online') echo 'selected'; ?>>Online</option>
+                        <option value="Hidden" <?php if ($user['status'] === 'Hidden') echo 'selected'; ?>>Hidden</option>
+                    </select>
+                </form>
+            </div>
 
-    </div>
+            <?php if ($student): ?>
+                <div class="section card">
+                    <h2>Student Info</h2>
+                    <p><strong>Batch:</strong> <?php echo htmlspecialchars($student['batch']); ?></p>
+                    <p><strong>Major:</strong> <?php echo htmlspecialchars($student['major']); ?></p>
+                </div>
+            <?php endif; ?>
 
-    <?php if ($student): ?>
-        <div class="section">
-            <h2>Student Info</h2>
-            <p><strong>Batch:</strong> <?php echo htmlspecialchars($student['batch']); ?></p>
-            <p><strong>Major:</strong> <?php echo htmlspecialchars($student['major']); ?></p>
+            <?php if ($instructor): ?>
+                <div class="section card">
+                    <h2>Instructor Info</h2>
+                    <p><strong>Department:</strong> <?php echo htmlspecialchars($instructor['department']); ?></p>
+                    <p><strong>Designation:</strong> <?php echo htmlspecialchars($instructor['designation']); ?></p>
+                    <p><strong>Initial:</strong> <?php echo htmlspecialchars($instructor['initial']); ?></p>
+                </div>
+            <?php endif; ?>
+
+            <div class="section card">
+                <h2>Class Routine</h2>
+                <?php if (mysqli_num_rows($routine_result) > 0): ?>
+                    <table class="routine-table">
+                        <thead>
+                            <tr>
+                                <th>Course Code</th>
+                                <th>Section</th>
+                                <th>Day</th>
+                                <th>Start</th>
+                                <th>End</th>
+                                <th>Room</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php while ($row = mysqli_fetch_assoc($routine_result)): ?>
+                                <tr>
+                                    <td><?php echo htmlspecialchars($row['course_code']); ?></td>
+                                    <td><?php echo htmlspecialchars($row['section']); ?></td>
+                                    <td><?php echo htmlspecialchars($row['day']); ?></td>
+                                    <td><?php echo htmlspecialchars($row['start_time']); ?></td>
+                                    <td><?php echo htmlspecialchars($row['end_time']); ?></td>
+                                    <td><?php echo htmlspecialchars($row['room']); ?></td>
+                                </tr>
+                            <?php endwhile; ?>
+                        </tbody>
+                    </table>
+                <?php else: ?>
+                    <p>No class routines found.</p>
+                <?php endif; ?>
+            </div>
+
+            <div class="section card button-group">
+                <a href="#">Groups</a>
+                <a href="#">Messages</a>
+                <a href="../select_courses.php">Enroll New Course</a>
+                <a href="edit_profile.php">Edit Profile</a>
+                
+            </div>
         </div>
-    <?php endif; ?>
+    </main>
 
-    <?php if ($instructor): ?>
-        <div class="section">
-            <h2>Instructor Info</h2>
-            <p><strong>Department:</strong> <?php echo htmlspecialchars($instructor['department']); ?></p>
-            <p><strong>Designation:</strong> <?php echo htmlspecialchars($instructor['designation']); ?></p>
-            <p><strong>Initial:</strong> <?php echo htmlspecialchars($instructor['initial']); ?></p>
-        </div>
-    <?php endif; ?>
-
-    <div class="section">
-        <h2>Class Routine</h2>
-        <?php if (mysqli_num_rows($routine_result) > 0): ?>
-            <table class="routine-table">
-                <thead>
-                    <tr>
-                        <th>Course Code</th>
-                        <th>Section</th>
-                        <th>Day</th>
-                        <th>Start</th>
-                        <th>End</th>
-                        <th>Room</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php while ($row = mysqli_fetch_assoc($routine_result)): ?>
-                        <tr>
-                            <td><?php echo htmlspecialchars($row['course_code']); ?></td>
-                            <td><?php echo htmlspecialchars($row['section']); ?></td>
-                            <td><?php echo htmlspecialchars($row['day']); ?></td>
-                            <td><?php echo htmlspecialchars($row['start_time']); ?></td>
-                            <td><?php echo htmlspecialchars($row['end_time']); ?></td>
-                            <td><?php echo htmlspecialchars($row['room']); ?></td>
-                        </tr>
-                    <?php endwhile; ?>
-                </tbody>
-            </table>
-        <?php else: ?>
-            <p>No class routines found.</p>
-        <?php endif; ?>
-    </div>
-
-    <div class="section" style="text-align: center;">
-        <a class="btn" href="../index.php" style="background-color:rgb(43, 175, 192);">Home</a>
-        <a class="btn" href="../select_courses.php" style="background-color:rgb(43, 192, 110);">Enroll New Course</a>
-        <a class="btn" href="edit_profile.php">Edit Profile</a>
-        <a class="btn" href="../logout.php" style="background-color: #c0392b;">Logout</a>
-    </div>
-</div>
-
+    <footer class="site-footer">
+        © 2025 Brac University. All rights reserved.
+    </footer>
 </body>
 </html>
