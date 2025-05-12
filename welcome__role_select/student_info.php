@@ -8,28 +8,28 @@ if (!isset($_SESSION['user_id'])) {
 }
 
 $user_id = $_SESSION['user_id'];
-$error_message = ''; // To hold error message
+$error_message = ''; 
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $session = $_POST['session']; // Spring, Summer, or Fall
-    $year = $_POST['year']; // Year input
-    $batch = $session . '-' . $year; // Concatenate to form the batch string
+    $session = $_POST['session']; 
+    $year = $_POST['year']; 
+    $batch = $session . '-' . $year;
     $major = $_POST['major'];
     $id_no = $_POST['id_no'];
 
-    // Check if the id_no already exists in the user table
+    
     $checkIdNo = "SELECT * FROM user WHERE id_no = '$id_no'";
     $result = mysqli_query($conn, $checkIdNo);
 
     if (mysqli_num_rows($result) > 0) {
-        // If id_no exists, show an error message
+
         $error_message = "This Student ID already exists. Please enter a different ID.";
     } else {
-        // Save to student table
+
         $insertStudent = "INSERT INTO student (user_id, batch, major) VALUES ($user_id, '$batch', '$major')";
         mysqli_query($conn, $insertStudent);
 
-        // Update user table with id_no
+
         $updateUser = "UPDATE user SET id_no = '$id_no' WHERE user_id = $user_id";
         mysqli_query($conn, $updateUser);
 
@@ -39,37 +39,42 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 ?>
 
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
     <title>Student Info</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="welcome.css">
 </head>
 <body>
-    <div class="container">
-        <h2>Enter Your Student Info</h2>
+    <div class="bg-overlay"></div>
+    <div class="container fade-in">
+        <h1>Enter Your Student Info</h1>
 
         <!-- Display error message if id_no already exists -->
         <?php if ($error_message): ?>
-            <div style="color: red; font-weight: bold; margin-bottom: 15px;">
-                <?php echo $error_message; ?>
-            </div>
+            <div class="error-message"><?php echo htmlspecialchars($error_message); ?></div>
         <?php endif; ?>
 
-        <form method="POST">
-            <label for="session">Select Admission Session:</label>
-            <select name="session" required>
+        <form method="POST" class="info-form">
+            <label for="session">Select Admission Session</label>
+            <select name="session" id="session" required>
                 <option value="Spring">Spring</option>
                 <option value="Summer">Summer</option>
                 <option value="Fall">Fall</option>
-            </select><br>
+            </select>
 
-            <label for="year">Enter Admission Year:</label>
-            <input type="text" name="year" placeholder="Year (e.g., 2022)" required><br>
+            <label for="year">Admission Year</label>
+            <input type="text" name="year" id="year" placeholder="e.g., 2022" required>
 
-            <input type="text" name="major" placeholder="Major (e.g., CSE)" required><br>
-            <input type="text" name="id_no" placeholder="Student ID" required><br>
-            <button type="submit">Submit</button>
+            <label for="major">Major</label>
+            <input type="text" name="major" id="major" placeholder="e.g., CSE" required>
+
+            <label for="id_no">Student ID</label>
+            <input type="text" name="id_no" id="id_no" placeholder="Student ID" required>
+
+            <button type="submit" class="btn">Submit</button>
         </form>
     </div>
 </body>

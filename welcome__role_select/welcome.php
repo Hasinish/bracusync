@@ -12,7 +12,7 @@ $query = "SELECT id_no FROM user WHERE user_id = $user_id";
 $result = mysqli_query($conn, $query);
 $user = mysqli_fetch_assoc($result);
 
-// Redirect if ID already exists
+
 if (!empty($user['id_no'])) {
     header("Location: /BracuSync/index.php");
     exit();
@@ -27,6 +27,7 @@ if (!empty($user['id_no'])) {
     <link rel="stylesheet" href="welcome.css">
 </head>
 <body>
+    <div class="bg-overlay"></div>
     <div class="container fade-in">
         <h1>Welcome to <span style="color: #007bff;">BracuSync</span></h1>
         <p class="info-text">
@@ -41,7 +42,7 @@ if (!empty($user['id_no'])) {
             <br><br>
             Click <strong>Next</strong> to select your role and complete your profile setup.
         </p>
-        <a href="role_select.php" class="next-button">Next</a>
+        <a href="role_select.php" class="next-button btn">Next</a>
     </div>
 </body>
 </html>

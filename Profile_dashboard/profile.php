@@ -81,9 +81,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['status'])) {
 
             <div class="section card">
                 <h2>User Info</h2>
-                <p><strong>Username:</strong> <?php echo htmlspecialchars($user['username']); ?></p>
-                <p><strong>Email:</strong> <?php echo htmlspecialchars($user['email']); ?></p>
-                <p><strong>ID No:</strong> <?php echo htmlspecialchars($user['id_no']); ?></p>
+                <p><strong>Username:</strong> <?php echo ($user['username']); ?></p>
+                <p><strong>Email:</strong> <?php echo ($user['email']); ?></p>
+                <p><strong>ID No:</strong> <?php echo ($user['id_no']); ?></p>
 
                 <form method="POST" class="status-toggle">
                     <label for="status"><strong>Status:</strong></label>
@@ -97,17 +97,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['status'])) {
             <?php if ($student): ?>
                 <div class="section card">
                     <h2>Student Info</h2>
-                    <p><strong>Batch:</strong> <?php echo htmlspecialchars($student['batch']); ?></p>
-                    <p><strong>Major:</strong> <?php echo htmlspecialchars($student['major']); ?></p>
+                    <p><strong>Batch:</strong> <?php echo ($student['batch']); ?></p>
+                    <p><strong>Major:</strong> <?php echo ($student['major']); ?></p>
                 </div>
             <?php endif; ?>
 
             <?php if ($instructor): ?>
                 <div class="section card">
                     <h2>Instructor Info</h2>
-                    <p><strong>Department:</strong> <?php echo htmlspecialchars($instructor['department']); ?></p>
-                    <p><strong>Designation:</strong> <?php echo htmlspecialchars($instructor['designation']); ?></p>
-                    <p><strong>Initial:</strong> <?php echo htmlspecialchars($instructor['initial']); ?></p>
+                    <p><strong>Department:</strong> <?php echo ($instructor['department']); ?></p>
+                    <p><strong>Designation:</strong> <?php echo ($instructor['designation']); ?></p>
+                    <p><strong>Initial:</strong> <?php echo ($instructor['initial']); ?></p>
                 </div>
             <?php endif; ?>
 
@@ -128,12 +128,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['status'])) {
                         <tbody>
                             <?php while ($row = mysqli_fetch_assoc($routine_result)): ?>
                                 <tr>
-                                    <td><?php echo htmlspecialchars($row['course_code']); ?></td>
-                                    <td><?php echo htmlspecialchars($row['section']); ?></td>
-                                    <td><?php echo htmlspecialchars($row['day']); ?></td>
-                                    <td><?php echo htmlspecialchars($row['start_time']); ?></td>
-                                    <td><?php echo htmlspecialchars($row['end_time']); ?></td>
-                                    <td><?php echo htmlspecialchars($row['room']); ?></td>
+                                    <td><?php echo ($row['course_code']); ?></td>
+                                    <td><?php echo ($row['section']); ?></td>
+                                    <td><?php echo ($row['day']); ?></td>
+                                    <td><?php echo ($row['start_time']); ?></td>
+                                    <td><?php echo ($row['end_time']); ?></td>
+                                    <td><?php echo ($row['room']); ?></td>
                                 </tr>
                             <?php endwhile; ?>
                         </tbody>
@@ -144,9 +144,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['status'])) {
             </div>
 
             <div class="section card button-group">
-                <a href="#">Groups</a>
-                <a href="#">Messages</a>
-                <a href="../select_courses.php">Enroll New Course</a>
+                <a href="../group_post/group_select.php">Groups</a>
+                <a href="../messaging/messages.php">Messages</a>
+                <a href="../course_enrollment/select_courses.php">Edit Routine</a>
                 <a href="edit_profile.php">Edit Profile</a>
                 
             </div>

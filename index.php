@@ -23,7 +23,7 @@ if (!isset($_SESSION['user_id'])) {
         </header>
 
         <nav>
-            <a href="index.php">Home</a>
+            <a href="index.php" class="active">Home</a>
             <a href="Profile_dashboard/profile.php">Profile</a>
             <a href="lost_and_found/lost_and_foundpage.php">Lost And Found</a>
             <a href="Resource_Repository/resourcepage.php">Resource Repository</a>

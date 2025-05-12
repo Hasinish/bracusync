@@ -15,7 +15,7 @@ html, body {
 
 body {
     min-height: 100vh;
-    background: url('https://ceramicbangladesh.com/wp-content/uploads/2025/02/Asset-14_13_11zon.webp') no-repeat center/cover;
+    background: url('https://ceramicbangladesh.com/wp-content/uploads/2025/02/Asset-14_13_11zon.webp') no-repeat center/cover fixed;
     position: relative;
     overflow-x: hidden;
     display: flex;
@@ -115,9 +115,7 @@ nav a:hover::before {
 .container {
     width: 90%;
     max-width: 800px;
-    
     margin: 20px auto;
-
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
     border: 2px solid #0ef;
@@ -181,6 +179,8 @@ nav a:hover::before {
 
 .status-toggle {
     margin-top: 15px;
+    display: flex;
+    align-items: center;
 }
 
 .status-toggle label {
@@ -190,19 +190,35 @@ nav a:hover::before {
 }
 
 .status-toggle select {
-    padding: 8px 12px;
+    padding: 8px 30px 8px 12px; /* Adjusted padding for dropdown arrow */
     font-size: 1rem;
     color: #fff;
     background: rgba(255, 255, 255, 0.1);
     border: 1px solid #0ef;
     border-radius: 5px;
     cursor: pointer;
-    transition: border-color 0.3s ease;
+    transition: border-color 0.3s ease, background 0.3s ease;
+    appearance: none; /* Remove default dropdown arrow */
+    background-image: url('data:image/svg+xml;utf8,<svg fill="%230ef" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 10px center;
 }
 
 .status-toggle select:focus {
     outline: none;
     border-color: #fff;
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.status-toggle select option {
+    background: #081b29; /* Dark background for options */
+    color: #fff;
+    font-size: 1rem;
+}
+
+.status-toggle select:hover {
+    border-color: #0ef;
+    background: rgba(255, 255, 255, 0.15);
 }
 
 .routine-table {
@@ -255,21 +271,23 @@ nav a:hover::before {
     color: #0ef;
 }
 
-.button-group a[href="#"]::before {
-    content: '\f0c0'; /* Icon for Groups (users) */
+.button-group a[href="../group_post/group_select.php"]::before {
+    content: '\f0c0';
 }
 
 .button-group a[href="#"]:nth-child(2)::before {
     content: '\f075'; /* Icon for Messages (comment) */
 }
 
-.button-group a[href="../select_courses.php"]::before {
+.button-group a[href="../course_enrollment/select_courses.php"]::before {
     content: '\f02d'; /* Icon for Enroll New Course (book) */
 }
 
 .button-group a[href="edit_profile.php"]::before {
     content: '\f044'; /* Icon for Edit Profile (edit) */
 }
+
+
 
 .button-group a:hover {
     background: #0ef;

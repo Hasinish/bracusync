@@ -11,14 +11,15 @@ if (!isset($_SESSION['user_id'])) {
 <head>
     <meta charset="UTF-8">
     <title>Select Role</title>
-    <link rel="stylesheet" href="role_select.css">
+    <link rel="stylesheet" href="welcome.css">
 </head>
 <body>
+    <div class="bg-overlay"></div>
     <div class="container fade-in">
         <h1>Select Your Role</h1>
-        <form method="POST" action="process_role.php">
-            <button type="submit" name="role" value="student" class="role-button">Student</button>
-            <button type="submit" name="role" value="instructor" class="role-button">Instructor</button>
+        <form method="POST" action="process_role.php" class="role-form">
+            <button type="submit" name="role" value="student" class="role-button btn">Student</button>
+            <button type="submit" name="role" value="instructor" class="role-button btn">Instructor</button>
         </form>
     </div>
 </body>
