@@ -31,26 +31,20 @@ FROM enrollments e
 JOIN sections s ON e.section_id = s.section_id
 JOIN class_schedule cs ON s.section_id = cs.section_id
 WHERE e.user_id = $user_id
-ORDER BY FIELD(cs.day, 'Sun','Mon','Tue','Wed','Thu','Fri','Sat'), cs.start_time
+ORDER BY s.course_code
 ";
 
 $routine_result = mysqli_query($conn, $routine_sql);
 
-// Handle status dropdown
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['status'])) {
     $new_status = $_POST['status'];
-    // Validate status value
     if ($new_status === 'Online' || $new_status === 'Hidden') {
         $update_status_sql = "UPDATE user SET status = '$new_status' WHERE user_id = $user_id";
         mysqli_query($conn, $update_status_sql);
-        
-        // Update session to remember the status
         $_SESSION['status'] = $new_status;
-
-        $user['status'] = $new_status; // Update local value
+        $user['status'] = $new_status;
     }
 } else {
-    // Set status from session if available
     if (isset($_SESSION['status'])) {
         $user['status'] = $_SESSION['status'];
     }
@@ -81,9 +75,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['status'])) {
 
             <div class="section card">
                 <h2>User Info</h2>
-                <p><strong>Username:</strong> <?php echo ($user['username']); ?></p>
-                <p><strong>Email:</strong> <?php echo ($user['email']); ?></p>
-                <p><strong>ID No:</strong> <?php echo ($user['id_no']); ?></p>
+                <p><strong>Username:</strong> <?= ($user['username']); ?></p>
+                <p><strong>Email:</strong> <?= ($user['email']); ?></p>
+                <p><strong>ID No:</strong> <?= ($user['id_no']); ?></p>
 
                 <form method="POST" class="status-toggle">
                     <label for="status"><strong>Status:</strong></label>
@@ -97,17 +91,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['status'])) {
             <?php if ($student): ?>
                 <div class="section card">
                     <h2>Student Info</h2>
-                    <p><strong>Batch:</strong> <?php echo ($student['batch']); ?></p>
-                    <p><strong>Major:</strong> <?php echo ($student['major']); ?></p>
+                    <p><strong>Batch:</strong> <?= ($student['batch']); ?></p>
+                    <p><strong>Major:</strong> <?= ($student['major']); ?></p>
                 </div>
             <?php endif; ?>
 
             <?php if ($instructor): ?>
                 <div class="section card">
                     <h2>Instructor Info</h2>
-                    <p><strong>Department:</strong> <?php echo ($instructor['department']); ?></p>
-                    <p><strong>Designation:</strong> <?php echo ($instructor['designation']); ?></p>
-                    <p><strong>Initial:</strong> <?php echo ($instructor['initial']); ?></p>
+                    <p><strong>Department:</strong> <?= ($instructor['department']); ?></p>
+                    <p><strong>Designation:</strong> <?= ($instructor['designation']); ?></p>
+                    <p><strong>Initial:</strong> <?= ($instructor['initial']); ?></p>
                 </div>
             <?php endif; ?>
 
@@ -128,12 +122,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['status'])) {
                         <tbody>
                             <?php while ($row = mysqli_fetch_assoc($routine_result)): ?>
                                 <tr>
-                                    <td><?php echo ($row['course_code']); ?></td>
-                                    <td><?php echo ($row['section']); ?></td>
-                                    <td><?php echo ($row['day']); ?></td>
-                                    <td><?php echo ($row['start_time']); ?></td>
-                                    <td><?php echo ($row['end_time']); ?></td>
-                                    <td><?php echo ($row['room']); ?></td>
+                                    <td><?= ($row['course_code']); ?></td>
+                                    <td><?= ($row['section']); ?></td>
+                                    <td><?= ($row['day']); ?></td>
+                                    <td><?= ($row['start_time']); ?></td>
+                                    <td><?= ($row['end_time']); ?></td>
+                                    <td><?= ($row['room']); ?></td>
                                 </tr>
                             <?php endwhile; ?>
                         </tbody>

@@ -275,7 +275,7 @@ nav a:hover::before {
     content: '\f0c0';
 }
 
-.button-group a[href="#"]:nth-child(2)::before {
+.button-group a[href="../messaging/messages.php"]::before {
     content: '\f075'; /* Icon for Messages (comment) */
 }
 

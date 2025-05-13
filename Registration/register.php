@@ -2,9 +2,9 @@
 session_start();
 require_once '../connect.php';
 
-$username = isset($_POST['username']) ? trim($_POST['username']) : '';
-$email = isset($_POST['email']) ? trim($_POST['email']) : '';
-$password = isset($_POST['password']) ? $_POST['password'] : '';
+$username = trim($_POST['username']);
+$email = trim($_POST['email']);
+$password = $_POST['password'];
 $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
 $_SESSION['username'] = $username;
@@ -24,3 +24,4 @@ if (mysqli_num_rows($result) > 0) {
     header("Location: ../Login/loginpage.php"); 
     exit();
 } 
+?>

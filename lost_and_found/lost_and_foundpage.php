@@ -78,21 +78,21 @@ if (!isset($_SESSION['user_id'])) {
                                 FROM lost_and_found 
                                 JOIN user ON lost_and_found.user_id = user.user_id 
                                 ORDER BY lost_and_found.date DESC";
-                        $result = $conn->query($sql);
+                        $result = mysqli_query($conn, $sql);
 
-                        if ($result->num_rows > 0) {
+                        if (mysqli_num_rows($result) > 0) {
                             while ($row = $result->fetch_assoc()) {
                                 echo "<tr>
-                                    <td>" . htmlspecialchars($row['item_name']) . "</td>
-                                    <td>" . htmlspecialchars($row['description']) . "</td>
-                                    <td>" . htmlspecialchars($row['location']) . "</td> 
-                                    <td>" . htmlspecialchars($row['date']) . "</td>
-                                    <td>" . htmlspecialchars($row['time']) . "</td>
-                                    <td><a href='" . htmlspecialchars($row['image_path']) . "' target='_blank'>Show Image</a></td>
-                                    <td>" . htmlspecialchars($row['username']) . "</td>";
+                                    <td>" . ($row['item_name']) . "</td>
+                                    <td>" . ($row['description']) . "</td>
+                                    <td>" . ($row['location']) . "</td> 
+                                    <td>" . ($row['date']) . "</td>
+                                    <td>" . ($row['time']) . "</td>
+                                    <td><a href='" . ($row['image_path']) . "' target='_blank'>Show Image</a></td>
+                                    <td>" . ($row['username']) . "</td>";
 
                                 if (isset($_SESSION['user_id']) && $_SESSION['user_id'] == $row['user_id']) {
-                                    echo "<td><a href='delete.php?id=" . htmlspecialchars($row['item_id']) . "' onclick=\"return confirm('Delete this report?');\">Delete</a></td>";
+                                    echo "<td><a href='delete.php?id=" . ($row['item_id']) . "' onclick=\"return confirm('Delete this report?');\">Delete</a></td>";
                                 } else {
                                     echo "<td>-</td>";
                                 }

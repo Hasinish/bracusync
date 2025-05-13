@@ -9,15 +9,20 @@ if (!isset($_SESSION['user_id'])) {
 
 $user_id = $_SESSION['user_id'];
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $department = $_POST['department'];
-    $designation = $_POST['designation'];
-    $id_no = $_POST['id_no'];
-    $initial = $_POST['initial'];
+if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 
+$department = $_POST['department'];
+$designation = $_POST['designation'];
+$id_no = $_POST['id_no'];
+$initial = $_POST['initial'];
 
+$checkIdNo = "SELECT * FROM user WHERE id_no = '$id_no'";
+$result = mysqli_query($conn, $checkIdNo);
+if (mysqli_num_rows($result) > 0) {
+    $error_message = "This Employee ID already exists. Please enter a different ID.";}
+else{
     $insertInstructor = "INSERT INTO instructor (user_id, department, designation, initial) 
-                         VALUES ($user_id, '$department', '$designation', '$initial')";
+                            VALUES ($user_id, '$department', '$designation', '$initial')";
     mysqli_query($conn, $insertInstructor);
 
 
@@ -26,6 +31,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     header("Location: /BracuSync/index.php");
     exit();
+}
+
 }
 ?>
 
@@ -40,6 +47,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
     <div class="bg-overlay"></div>
     <div class="container fade-in">
+        <!-- Display error message if id_no already exists -->
+        <?php if ($error_message): ?>
+            <div class="error-message"><?php echo htmlspecialchars($error_message); ?></div>
+        <?php endif; ?>
+
         <h1>Enter Your Instructor Info</h1>
         <form method="POST" class="info-form">
             <label for="department">Department</label>

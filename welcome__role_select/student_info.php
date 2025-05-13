@@ -10,33 +10,33 @@ if (!isset($_SESSION['user_id'])) {
 $user_id = $_SESSION['user_id'];
 $error_message = ''; 
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $session = $_POST['session']; 
-    $year = $_POST['year']; 
-    $batch = $session . '-' . $year;
-    $major = $_POST['major'];
-    $id_no = $_POST['id_no'];
 
-    
-    $checkIdNo = "SELECT * FROM user WHERE id_no = '$id_no'";
-    $result = mysqli_query($conn, $checkIdNo);
-
-    if (mysqli_num_rows($result) > 0) {
-
-        $error_message = "This Student ID already exists. Please enter a different ID.";
-    } else {
-
-        $insertStudent = "INSERT INTO student (user_id, batch, major) VALUES ($user_id, '$batch', '$major')";
-        mysqli_query($conn, $insertStudent);
+$session = $_POST['session']; 
+$year = $_POST['year']; 
+$batch = $session . '-' . $year;
+$major = $_POST['major'];
+$id_no = $_POST['id_no'];
 
 
-        $updateUser = "UPDATE user SET id_no = '$id_no' WHERE user_id = $user_id";
-        mysqli_query($conn, $updateUser);
+$checkIdNo = "SELECT * FROM user WHERE id_no = '$id_no'";
+$result = mysqli_query($conn, $checkIdNo);
 
-        header("Location: /BracuSync/index.php");
-        exit();
-    }
+if (mysqli_num_rows($result) > 0) {
+
+    $error_message = "This Student ID already exists. Please enter a different ID.";
+} else {
+
+    $insertStudent = "INSERT INTO student (user_id, batch, major) VALUES ($user_id, '$batch', '$major')";
+    mysqli_query($conn, $insertStudent);
+
+
+    $updateUser = "UPDATE user SET id_no = '$id_no' WHERE user_id = $user_id";
+    mysqli_query($conn, $updateUser);
+
+    header("Location: /BracuSync/index.php");
+    exit();
 }
+
 ?>
 
 

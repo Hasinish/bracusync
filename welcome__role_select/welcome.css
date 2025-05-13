@@ -196,3 +196,7 @@ body {
     max-width: 100%;
   }
 }
+
+.info-text{
+  color: white;
+}

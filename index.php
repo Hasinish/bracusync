@@ -31,9 +31,9 @@ if (!isset($_SESSION['user_id'])) {
         </nav>  
 
         <div class="container">
-            <h1>Welcome, <?php echo ($_SESSION['username']); ?> to BracuSync!</h1>
-            <p>This is a simple and secure platform for students to log in, register, and access services easily. Get started by registering a new account or logging in if you're already a member.</p>
-            <a href="/Registration/register.html" class="btn">Get Started</a>
+            <h1>Welcome, <?= ($_SESSION['username']); ?> to BracuSync!</h1>
+            <p>This is a simple and secure platform for students to log in, register, and access services easily. Get started by going to your profile and editing your routine, adding courses, and find out what's happeing in your groups.</p>
+            <!-- <a href="index.php" class="btn">Get Started</a> -->
         </div>
     </main>
 

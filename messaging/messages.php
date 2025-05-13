@@ -70,7 +70,7 @@ if (isset($_POST['message_content']) && $selected_user_id > 0) {
             <a href="../Profile_dashboard/profile.php">Profile</a>
             <a href="../lost_and_found/lost_and_foundpage.php">Lost And Found</a>
             <a href="../Resource_Repository/resourcepage.php">Resource Repository</a>
-            <a href="group_select.php">Groups</a>
+            <a href="../group_post/group_select.php">Groups</a>
             <a href="messages.php" class="active">Messages</a>
             <a href="../logout.php">Logout</a>
         </nav>
