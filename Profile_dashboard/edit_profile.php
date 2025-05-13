@@ -24,7 +24,7 @@ if(mysqli_num_rows($check_instructor_result) > 0){
     $is_instructor = true;
 }
 
-//All Student info:
+
 if($is_student){
     $student_query = "SELECT * FROM user JOIN student ON user.user_id = student.user_id WHERE user.user_id = $user_id";
     $student_result = mysqli_query($conn, $student_query);

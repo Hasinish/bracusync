@@ -6,7 +6,7 @@ if (!isset($_SESSION['user_id'])) {
     header("Location: /BracuSync/Login/loginpage.php");
     exit();
 }
-
+$error_message = null;
 $user_id = $_SESSION['user_id'];
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST'){
@@ -47,7 +47,7 @@ else{
 <body>
     <div class="bg-overlay"></div>
     <div class="container fade-in">
-        <!-- Display error message if id_no already exists -->
+        
         <?php if ($error_message): ?>
             <div class="error-message"><?php echo htmlspecialchars($error_message); ?></div>
         <?php endif; ?>

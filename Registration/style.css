@@ -35,21 +35,21 @@ body{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    /* border: solid red; */
+    
 }
 
 
 .wrapper .form-box.register{
     right: 0;
     padding: 0 40px 0 60px;
-    /* display: none; */
+    
 }
 
 .form-box h2{
     font-size: 32px;
     color: #fff;
     text-align: center;
-    /* border: solid red; */
+    
 }
 
 .form-box .input-box{
@@ -174,7 +174,7 @@ body{
     left: 0;
     text-align: left;
     padding: 0 150px 60px 40px;
-    /* display: none; */
+    
     
     
 }    
@@ -183,7 +183,7 @@ body{
 .wrapper .info-text.register h2 p {
     font-size: 36px;
     color: #081b29;
-    /* border: red solid;     */
+    
 }
 
 .info-text h2 {
@@ -207,7 +207,7 @@ body{
     background: linear-gradient(#081b29,#0ef);
     border-bottom: 3px solid #0ef;
     transform: rotate(-12deg) skewY(-40deg);
-    /* transform: rotate(0) skewY(0); */
+    
     transform-origin: bottom left;
 }
 
@@ -218,7 +218,7 @@ body{
     width: 100vw;
     height: 100vh;
     overflow: hidden;
-    z-index: -2; /* lower than the overlay */
+    z-index: -2; 
     pointer-events: none;
 }
 
@@ -238,7 +238,7 @@ body{
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-color: rgba(0, 0, 0, 0.6); /* Adjust opacity for darkness */
-    z-index: -1; /* higher than video, lower than everything else */
+    background-color: rgba(0, 0, 0, 0.6); 
+    z-index: -1; 
     pointer-events: none;
 }

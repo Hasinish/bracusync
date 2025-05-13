@@ -4,12 +4,11 @@ require_once '../connect.php';
 
 $username = trim($_POST['username']);
 $email = trim($_POST['email']);
-$password = $_POST['password'];
-$hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+$hashedPassword = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
 $_SESSION['username'] = $username;
 $_SESSION['email'] = $email;
-$_SESSION['password'] = $password;
+
 
 $query = "SELECT * FROM user WHERE email = '$email'";
 $result = mysqli_query($conn, $query);

@@ -11,7 +11,7 @@ if (!isset($_SESSION['user_id'])) {
 $user_id = $_SESSION['user_id'];
 $section_id = isset($_GET['section_id']) ? intval($_GET['section_id']) : 0;
 
-// Verify user is enrolled in the section
+
 $verify_query = "SELECT 1 FROM enrollments WHERE user_id = $user_id AND section_id = $section_id";
 $verify_result = mysqli_query($conn, $verify_query);
 if (mysqli_num_rows($verify_result) == 0) {
@@ -19,7 +19,7 @@ if (mysqli_num_rows($verify_result) == 0) {
     exit();
 }
 
-// Check if user is an instructor
+
 $is_instructor = false;
 $instructor_query = "
     SELECT 1 
@@ -31,7 +31,7 @@ if (mysqli_num_rows($instructor_result) > 0) {
     $is_instructor = true;
 }
 
-// Handle new post submission (instructors only)
+
 if ($is_instructor && isset($_POST['post_content'])) {
     $content = trim($_POST['post_content']);
     if (!empty($content)) {
@@ -42,7 +42,7 @@ if ($is_instructor && isset($_POST['post_content'])) {
     }
 }
 
-// Handle new comment submission
+
 if (isset($_POST['comment_content']) && isset($_POST['post_id'])) {
     $content = trim($_POST['comment_content']);
     $post_id = intval($_POST['post_id']);
@@ -54,12 +54,12 @@ if (isset($_POST['comment_content']) && isset($_POST['post_id'])) {
     }
 }
 
-// Fetch section details
+
 $section_query = "SELECT course_code, section FROM sections WHERE section_id = $section_id";
 $section_result = mysqli_query($conn, $section_query);
 $section = mysqli_fetch_assoc($section_result);
 
-// Fetch posts
+
 $posts_query = "
     SELECT gp.post_id, gp.content, gp.timestamp, u.username
     FROM group_post gp
@@ -80,7 +80,7 @@ $posts_result = mysqli_query($conn, $posts_query);
 <body>
     <div class="bg-overlay"></div>
     <main>
-        <!-- Navigation Bar -->
+        
         <nav>
             <a href="../index.php">Home</a>
             <a href="../Profile_dashboard/profile.php">Profile</a>
@@ -90,11 +90,11 @@ $posts_result = mysqli_query($conn, $posts_query);
             <a href="../logout.php">Logout</a>
         </nav>
 
-        <!-- Group Posts Section -->
+        
         <div class="container posts-section">
             <h1><?= ($section['course_code']) ?> - Section <?= ($section['section']) ?> Group</h1>
             <div class="section card">
-                <!-- Post Creation Form (Instructors Only) -->
+                
                 <?php if ($is_instructor): ?>
                     <form action="" method="POST" class="report-form">
                         <label for="post_content">Create Announcement</label>
@@ -103,7 +103,7 @@ $posts_result = mysqli_query($conn, $posts_query);
                     </form>
                 <?php endif; ?>
 
-                <!-- Posts Feed -->
+                
                 <div class="posts-feed">
                     <?php if (mysqli_num_rows($posts_result) == 0): ?>
                         <p class="no-posts">No posts available yet.</p>
@@ -117,7 +117,7 @@ $posts_result = mysqli_query($conn, $posts_query);
                                 <div class="post-content">
                                     <p><?= ($post['content']) ?></p>
                                 </div>
-                                <!-- Comments Section -->
+                                
                                 <div class="comments-section">
                                     <?php
                                     $comments_query = "
@@ -137,7 +137,7 @@ $posts_result = mysqli_query($conn, $posts_query);
                                             <p><?= ($comment['content']) ?></p>
                                         </div>
                                     <?php endwhile; ?>
-                                    <!-- Comment Form -->
+                                    
                                     <form action="" method="POST" class="report-form comment-form">
                                         <input type="hidden" name="post_id" value="<?= $post['post_id'] ?>">
                                         <textarea name="comment_content" placeholder="Add a comment..." required></textarea>
@@ -152,7 +152,7 @@ $posts_result = mysqli_query($conn, $posts_query);
         </div>
     </main>
 
-    <!-- Footer -->
+    
     <footer class="site-footer">
         © 2025 Brac University. All rights reserved.
     </footer>

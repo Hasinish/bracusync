@@ -9,22 +9,22 @@ if (!isset($_SESSION['user_id'])) {
 
 $user_id = $_SESSION['user_id'];
 
-// Fetch user info
+
 $user_sql = "SELECT * FROM user WHERE user_id = $user_id";
 $user_result = mysqli_query($conn, $user_sql);
 $user = mysqli_fetch_assoc($user_result);
 
-// Fetch student info
+
 $student_sql = "SELECT * FROM student WHERE user_id = $user_id";
 $student_result = mysqli_query($conn, $student_sql);
 $student = mysqli_fetch_assoc($student_result);
 
-// Fetch instructor info
+
 $instructor_sql = "SELECT * FROM instructor WHERE user_id = $user_id";
 $instructor_result = mysqli_query($conn, $instructor_sql);
 $instructor = mysqli_fetch_assoc($instructor_result);
 
-// Fetch enrolled sections and routines
+
 $routine_sql = "
 SELECT s.course_code, s.section, cs.day, cs.start_time, cs.end_time, cs.room
 FROM enrollments e

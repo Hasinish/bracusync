@@ -130,7 +130,7 @@ nav a:hover::before {
 
 .container h1 {
     font-size: 2rem;
-    color: #fff; /* White */
+    color: #fff; 
     margin-bottom: 15px;
     position: relative;
 }
@@ -139,7 +139,7 @@ nav a:hover::before {
     content: '';
     width: 50px;
     height: 3px;
-    background: #0ef; /* Neon cyan */
+    background: #0ef; 
     position: absolute;
     bottom: -10px;
     left: 50%;
@@ -148,7 +148,7 @@ nav a:hover::before {
 
 .container p {
     font-size: 1rem;
-    color: #fff; /* White */
+    color: #fff; 
     margin-bottom: 25px;
     line-height: 1.6;
 }
@@ -156,10 +156,10 @@ nav a:hover::before {
 .btn {
     display: inline-block;
     padding: 12px 24px;
-    background: transparent; /* Match login.css button style */
-    border: 2px solid #0ef; /* Neon cyan border */
-    color: #fff; /* White text */
-    border-radius: 40px; /* Match login.css button border-radius */
+    background: transparent; 
+    border: 2px solid #0ef; 
+    color: #fff; 
+    border-radius: 40px; 
     font-size: 1rem;
     font-weight: 600;
     text-decoration: none;

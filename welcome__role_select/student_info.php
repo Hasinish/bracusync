@@ -52,7 +52,7 @@ if (mysqli_num_rows($result) > 0) {
     <div class="container fade-in">
         <h1>Enter Your Student Info</h1>
 
-        <!-- Display error message if id_no already exists -->
+        
         <?php if ($error_message): ?>
             <div class="error-message"><?php echo htmlspecialchars($error_message); ?></div>
         <?php endif; ?>

@@ -2,7 +2,7 @@
 session_start();
 require_once '../connect.php';
 
-// Redirect to login if user is not authenticated
+
 if (!isset($_SESSION['user_id'])) {
     header("Location: ../Login/loginpage.php");
     exit();
@@ -10,7 +10,7 @@ if (!isset($_SESSION['user_id'])) {
 
 $user_id = $_SESSION['user_id'];
 
-// Fetch enrolled sections for the user
+
 $sections_query = "
     SELECT s.section_id, s.course_code, s.section
     FROM enrollments e
@@ -31,7 +31,7 @@ $sections_result = mysqli_query($conn, $sections_query);
 <body>
     <div class="bg-overlay"></div>
     <main>
-        <!-- Navigation Bar -->
+        
         <nav>
             <a href="../index.php">Home</a>
             <a href="../Profile_dashboard/profile.php">Profile</a>
@@ -40,7 +40,7 @@ $sections_result = mysqli_query($conn, $sections_query);
             <a href="../logout.php">Logout</a>
         </nav>
 
-        <!-- Group Selection Section -->
+        
         <div class="container report-section">
             <h1>Select Group</h1>
             <div class="section card">
@@ -60,7 +60,7 @@ $sections_result = mysqli_query($conn, $sections_query);
         </div>
     </main>
 
-    <!-- Footer -->
+    
     <footer class="site-footer">
         © 2025 Brac University. All rights reserved.
     </footer>

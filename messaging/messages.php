@@ -46,7 +46,7 @@ if (isset($_POST['message_content']) && $selected_user_id > 0) {
             INSERT INTO message (sender_id, recever_id, content, timestamp)
             VALUES ($user_id, $selected_user_id, '$content', CURRENT_TIMESTAMP)";
         mysqli_query($conn, $message_query);
-        // Redirect to refresh messages
+        
         header("Location: messages.php?user_id=$selected_user_id");
         exit();
     }
@@ -64,7 +64,7 @@ if (isset($_POST['message_content']) && $selected_user_id > 0) {
 <body>
     <div class="bg-overlay"></div>
     <main>
-        <!-- Navigation Bar -->
+        
         <nav>
             <a href="../index.php">Home</a>
             <a href="../Profile_dashboard/profile.php">Profile</a>
@@ -75,11 +75,11 @@ if (isset($_POST['message_content']) && $selected_user_id > 0) {
             <a href="../logout.php">Logout</a>
         </nav>
 
-        <!-- Messaging Section -->
+        
         <div class="container messaging-section">
             <h1>Messages</h1>
             <div class="messaging-container">
-                <!-- Sidebar: User List -->
+                
                 <div class="sidebar">
                     <h2>Users</h2>
                     <ul class="user-list">
@@ -93,7 +93,7 @@ if (isset($_POST['message_content']) && $selected_user_id > 0) {
                     </ul>
                 </div>
 
-                <!-- Chat Area -->
+                
                 <div class="chat-area">
                     <?php if ($selected_user_id > 0): ?>
                         <h2>Chat with <?= ($selected_username) ?></h2>
@@ -112,7 +112,7 @@ if (isset($_POST['message_content']) && $selected_user_id > 0) {
                                 <?php endforeach; ?>
                             <?php endif; ?>
                         </div>
-                        <!-- Message Form -->
+                        
                         <form action="" method="POST" class="report-form message-form">
                             <textarea name="message_content" placeholder="Type a message..." required></textarea>
                             <button type="submit" class="btn">Send</button>
@@ -125,7 +125,7 @@ if (isset($_POST['message_content']) && $selected_user_id > 0) {
         </div>
     </main>
 
-    <!-- Footer -->
+    
     <footer class="site-footer">
         © 2025 Brac University. All rights reserved.
     </footer>

@@ -190,7 +190,7 @@ nav a:hover::before {
 }
 
 .status-toggle select {
-    padding: 8px 30px 8px 12px; /* Adjusted padding for dropdown arrow */
+    padding: 8px 30px 8px 12px; 
     font-size: 1rem;
     color: #fff;
     background: rgba(255, 255, 255, 0.1);
@@ -198,7 +198,7 @@ nav a:hover::before {
     border-radius: 5px;
     cursor: pointer;
     transition: border-color 0.3s ease, background 0.3s ease;
-    appearance: none; /* Remove default dropdown arrow */
+    appearance: none; 
     background-image: url('data:image/svg+xml;utf8,<svg fill="%230ef" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
     background-repeat: no-repeat;
     background-position: right 10px center;
@@ -211,7 +211,7 @@ nav a:hover::before {
 }
 
 .status-toggle select option {
-    background: #081b29; /* Dark background for options */
+    background: #081b29; 
     color: #fff;
     font-size: 1rem;
 }
@@ -276,15 +276,15 @@ nav a:hover::before {
 }
 
 .button-group a[href="../messaging/messages.php"]::before {
-    content: '\f075'; /* Icon for Messages (comment) */
+    content: '\f075'; 
 }
 
 .button-group a[href="../course_enrollment/select_courses.php"]::before {
-    content: '\f02d'; /* Icon for Enroll New Course (book) */
+    content: '\f02d'; 
 }
 
 .button-group a[href="edit_profile.php"]::before {
-    content: '\f044'; /* Icon for Edit Profile (edit) */
+    content: '\f044'; 
 }
 
 

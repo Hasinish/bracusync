@@ -8,7 +8,7 @@ body {
     margin: 0;
 }
 
-/* Start with opacity 0 and translate down */
+
 .container {
     background: #fff;
     padding: 40px;
@@ -22,7 +22,7 @@ body {
     animation: fadeIn 1s ease forwards;
 }
 
-/* Proper animation fill */
+
 @keyframes fadeIn {
     to {
         opacity: 1;
