@@ -86,7 +86,7 @@ CREATE TABLE `comments` (
   KEY `pos-ter` (`post_id`),
   CONSTRAINT `commenter` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`),
   CONSTRAINT `pos-ter` FOREIGN KEY (`post_id`) REFERENCES `group_post` (`post_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -95,7 +95,7 @@ CREATE TABLE `comments` (
 
 LOCK TABLES `comments` WRITE;
 /*!40000 ALTER TABLE `comments` DISABLE KEYS */;
-INSERT INTO `comments` VALUES (1,'I am fine sir.','2025-05-11 23:26:05',26,1),(2,'How are you sir?','2025-05-11 23:26:51',26,1),(3,'Alhamdulillah!','2025-05-11 23:27:33',17,1),(4,'@Hasin @Nafi Alhamdulillah, Prepare for upcoming final','2025-05-11 23:35:21',29,1),(5,'ok sir','2025-05-14 00:12:00',17,3),(6,'@Nafi Good luck','2025-05-14 00:12:21',15,3),(7,'@Nafi Good luck','2025-05-14 00:12:34',15,3),(8,'ok','2025-05-14 00:12:45',15,3);
+INSERT INTO `comments` VALUES (1,'I am fine sir.','2025-05-11 23:26:05',26,1),(2,'How are you sir?','2025-05-11 23:26:51',26,1),(3,'Alhamdulillah!','2025-05-11 23:27:33',17,1),(4,'@Hasin @Nafi Alhamdulillah, Prepare for upcoming final','2025-05-11 23:35:21',29,1),(5,'ok sir','2025-05-14 00:12:00',17,3),(6,'@Nafi Good luck','2025-05-14 00:12:21',15,3),(7,'@Nafi Good luck','2025-05-14 00:12:34',15,3),(8,'ok','2025-05-14 00:12:45',15,3),(9,'ok sir','2025-05-14 16:36:27',34,6);
 /*!40000 ALTER TABLE `comments` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -122,7 +122,7 @@ CREATE TABLE `enrollments` (
 
 LOCK TABLES `enrollments` WRITE;
 /*!40000 ALTER TABLE `enrollments` DISABLE KEYS */;
-INSERT INTO `enrollments` VALUES (381,17,'2025-05-14'),(991,26,'2025-05-11'),(1021,26,'2025-05-11'),(1114,15,'2025-05-14'),(1114,17,'2025-05-11'),(1114,26,'2025-05-11'),(1114,29,'2025-05-11');
+INSERT INTO `enrollments` VALUES (170,17,'2025-05-14'),(340,36,'2025-05-14'),(381,17,'2025-05-14'),(849,37,'2025-05-14'),(991,26,'2025-05-11'),(1021,26,'2025-05-11'),(1114,15,'2025-05-14'),(1114,17,'2025-05-11'),(1114,26,'2025-05-11'),(1114,29,'2025-05-11'),(1136,15,'2025-05-14'),(1136,34,'2025-05-14'),(1136,37,'2025-05-14');
 /*!40000 ALTER TABLE `enrollments` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -144,7 +144,7 @@ CREATE TABLE `group_post` (
   KEY `grouper` (`section_id`),
   CONSTRAINT `grouper` FOREIGN KEY (`section_id`) REFERENCES `sections` (`section_id`),
   CONSTRAINT `poster` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -153,7 +153,7 @@ CREATE TABLE `group_post` (
 
 LOCK TABLES `group_post` WRITE;
 /*!40000 ALTER TABLE `group_post` DISABLE KEYS */;
-INSERT INTO `group_post` VALUES (1,'How are you guys?','2025-05-11 17:25:30',29,1114),(2,'To join the video meeting, click this link: https://meet.google.com/nya-xcbq-dii\r\nOtherwise, to join by phone, dial +1 530-728-0195 and enter this PIN: 947 829 977#','2025-05-11 17:28:12',29,1114),(3,'Dear Students,\r\nProject Report Deadline : 14th May 2025, 2:00 PM (Project Demonstration on 14th May in class)\r\nProject Report Submission Form: https://forms.gle/DDngrx5ktf87zAxZ9\r\n\r\nOur demo will start at exactly 2:05pm. Please follow the instructions below to ensure a smooth and organized session on project demo day [14th May] :\r\n\r\nSetup:\r\nArrive early to set up your project on a lab PC.\r\nAlternatively, you may use your personal laptop for the demo. [more preferrable]\r\n\r\nProject Requirements:\r\nEnsure your project is fully operational and ready to demo.\r\nOpen your database in one tab and your website/application in another for ease of presentation.\r\n\r\nDemo Structure:\r\nEach team will have 8-10 minutes to showcase their project.\r\nAll team members must demonstrate the features they contributed to.\r\nBe prepared to answer questions about your code, particularly in the backend and database queries.\r\n\r\nTeam Collaboration:\r\nEach team member should have a clear understanding of how the entire project works, including features contributed by other members.\r\nFeel free to reach out if you have any queries. Best of luck for the demo!','2025-05-13 18:11:23',15,1114);
+INSERT INTO `group_post` VALUES (1,'How are you guys?','2025-05-11 17:25:30',29,1114),(2,'To join the video meeting, click this link: https://meet.google.com/nya-xcbq-dii\r\nOtherwise, to join by phone, dial +1 530-728-0195 and enter this PIN: 947 829 977#','2025-05-11 17:28:12',29,1114),(3,'Dear Students,\r\nProject Report Deadline : 14th May 2025, 2:00 PM (Project Demonstration on 14th May in class)\r\nProject Report Submission Form: https://forms.gle/DDngrx5ktf87zAxZ9\r\n\r\nOur demo will start at exactly 2:05pm. Please follow the instructions below to ensure a smooth and organized session on project demo day [14th May] :\r\n\r\nSetup:\r\nArrive early to set up your project on a lab PC.\r\nAlternatively, you may use your personal laptop for the demo. [more preferrable]\r\n\r\nProject Requirements:\r\nEnsure your project is fully operational and ready to demo.\r\nOpen your database in one tab and your website/application in another for ease of presentation.\r\n\r\nDemo Structure:\r\nEach team will have 8-10 minutes to showcase their project.\r\nAll team members must demonstrate the features they contributed to.\r\nBe prepared to answer questions about your code, particularly in the backend and database queries.\r\n\r\nTeam Collaboration:\r\nEach team member should have a clear understanding of how the entire project works, including features contributed by other members.\r\nFeel free to reach out if you have any queries. Best of luck for the demo!','2025-05-13 18:11:23',15,1114),(5,'today project demo at 2','2025-05-14 10:07:05',37,1136),(6,'Come fast at 2:05 to show project demo','2025-05-14 10:35:19',37,1136);
 /*!40000 ALTER TABLE `group_post` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -171,7 +171,7 @@ CREATE TABLE `instructor` (
   `initial` varchar(10) DEFAULT NULL,
   PRIMARY KEY (`user_id`),
   CONSTRAINT `instructor user` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -180,7 +180,7 @@ CREATE TABLE `instructor` (
 
 LOCK TABLES `instructor` WRITE;
 /*!40000 ALTER TABLE `instructor` DISABLE KEYS */;
-INSERT INTO `instructor` VALUES (15,'CSE','Professor','MRT'),(17,'CSE','Professor','MUF'),(28,'CSE','Professor','IJN'),(29,'CSE','Lecturer','NZU');
+INSERT INTO `instructor` VALUES (15,'CSE','Professor','MRT'),(17,'CSE','Professor','MUF'),(28,'CSE','Professor','IJN'),(29,'CSE','Lecturer','NZU'),(36,'BBA','Lecturer','NSO'),(37,'CSE','Lecturer','SHRR'),(38,'CSE','Lecturer','SSD');
 /*!40000 ALTER TABLE `instructor` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -203,7 +203,7 @@ CREATE TABLE `lost_and_found` (
   PRIMARY KEY (`item_id`),
   KEY `LAF` (`user_id`),
   CONSTRAINT `LAF` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -212,7 +212,7 @@ CREATE TABLE `lost_and_found` (
 
 LOCK TABLES `lost_and_found` WRITE;
 /*!40000 ALTER TABLE `lost_and_found` DISABLE KEYS */;
-INSERT INTO `lost_and_found` VALUES (12,'2025-05-07','05:16:00','Umbrella','red umbrella','10B-20C','uploads/1746908180_istockphoto-915788572-612x612.jpg',17),(14,'2025-05-21','23:14:00','Pixel Phone','awdawdawd','Ground Floor near Pond','uploads/1747156328_hq720.jpg',15),(15,'2025-05-07','19:18:00','Id card','ID: 22201180','Ground Floor near Pond','uploads/1747171024_7F0D9184-536C-4A71-AB7A-8509AF31FDA0.jpeg',17),(16,'2025-05-07','13:06:00','Bottle','asdasd','10C-30C','',17);
+INSERT INTO `lost_and_found` VALUES (12,'2025-05-07','05:16:00','Umbrella','red umbrella','10B-20C','uploads/1746908180_istockphoto-915788572-612x612.jpg',17),(15,'2025-05-07','19:18:00','Id card','ID: 22201180','Ground Floor near Pond','uploads/1747171024_7F0D9184-536C-4A71-AB7A-8509AF31FDA0.jpeg',17),(16,'2025-05-07','13:06:00','Bottle','asdasd','10C-30C','',17);
 /*!40000 ALTER TABLE `lost_and_found` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -264,7 +264,7 @@ CREATE TABLE `resources` (
   PRIMARY KEY (`resource_id`),
   KEY `user_id` (`user_id`),
   CONSTRAINT `resources_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -273,6 +273,7 @@ CREATE TABLE `resources` (
 
 LOCK TABLES `resources` WRITE;
 /*!40000 ALTER TABLE `resources` DISABLE KEYS */;
+INSERT INTO `resources` VALUES (9,'CSE370','MSI CSE110 lectures','adwadaw','https://www.bracu.ac.bd/program-finder/undergraduate','2025-05-14',15);
 /*!40000 ALTER TABLE `resources` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -313,7 +314,8 @@ CREATE TABLE `student` (
   `user_id` int(11) NOT NULL AUTO_INCREMENT,
   `batch` varchar(20) NOT NULL,
   `major` varchar(50) NOT NULL,
-  PRIMARY KEY (`user_id`)
+  PRIMARY KEY (`user_id`),
+  CONSTRAINT `student_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -323,6 +325,7 @@ CREATE TABLE `student` (
 
 LOCK TABLES `student` WRITE;
 /*!40000 ALTER TABLE `student` DISABLE KEYS */;
+INSERT INTO `student` VALUES (34,'Summer-2022','CSE');
 /*!40000 ALTER TABLE `student` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -343,7 +346,7 @@ CREATE TABLE `user` (
   PRIMARY KEY (`user_id`),
   UNIQUE KEY `email` (`email`),
   UNIQUE KEY `id_no` (`id_no`)
-) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -352,7 +355,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (15,'Tanim','tanim@gmail.com','$2y$10$EwhLp.YtUCCrtlEbpJKZT.KK2oeF0t8lZ3OSqlHf6EfEP4739ADMS','Online',32341),(17,'Nafi','nafi@gmail.com','$2y$10$FL3OlVvdmEkdS4ojYbbENe0clHTHq5Y9uxil4danS.i7280u6fiqW','Online',12345),(18,'Namira','namiraabrarhaque@gmail.com','$2y$10$mNyLp9DVq7i3X/knn2VwvescPP8.J99pDRqjpRq/0IbHik/JHf.ui','Offline',22201191),(23,'Bithi','bithi@gmail.com','$2y$10$.b0tOwIrUCt2ZHD4zG/BSulw.fkGRu2tzb155Ss.Xt5RkCxDX/fB.','Offline',22201180),(24,'Rahman','rahman@gmail.com','$2y$10$oO6zrR1WrYLOhbkDqs2HSOUBWuJ69OFJ0J0Em2nskXi3kEJmkaziu','Offline',NULL),(25,'Prartho','prartho@gmail.com','$2y$10$o.6Q9Mwh5/3th3Y9qHt2y.Y3F1agMK0Zv3ASISiMD/cJi4kIBMD7i','Offline',22201192),(27,'Nusair','nusair@gmail.com','$2y$10$GJwjtsjqt3BlK2F65VYlyufjrSmUeKgbOp.g6czGFs0dLy14CgeX6','Offline',NULL),(28,'Nisha','nisha@gmail.com','$2y$10$aoLr9OHWWW6fMr.sAxh/zOmxCLNb5UUJMNg7foAvEFtBqt8TheI2y','Offline',88767),(29,'Nazmul','nazmul@gmail.com','$2y$10$hIdF4qNG/sWxL5.rqg4CaOfFivbPxZbPYdmk3bcJOczojuiBlPEuq','Online',14231),(32,'Hasin','hasinishrak2015@gmail.com','$2y$10$QmQH1cz.ktOphZ6o1Tr0xuvQGyW.CCpmD8wnxRxy8gKvtasJTMj4m','Offline',NULL),(34,'Messi','messi@gmail.com','$2y$10$j3PIkHgm.F6WePemSDW6dud9dP6kfQkXJARD0I1DYnAXnF94JmS5e','Offline',NULL),(35,'Ronaldo','ronaldo@yahoo.com','$2y$10$8RJztgmaYewJnW835QOOM./cOJVzvTRdZxkZqUNc1O2nMKF.uRo7G','Offline',NULL);
+INSERT INTO `user` VALUES (15,'Tanim','tanim@gmail.com','$2y$10$EwhLp.YtUCCrtlEbpJKZT.KK2oeF0t8lZ3OSqlHf6EfEP4739ADMS','Offline',32341),(17,'Nafi','nafi@gmail.com','$2y$10$FL3OlVvdmEkdS4ojYbbENe0clHTHq5Y9uxil4danS.i7280u6fiqW','Offline',12345),(18,'Namira','namiraabrarhaque@gmail.com','$2y$10$mNyLp9DVq7i3X/knn2VwvescPP8.J99pDRqjpRq/0IbHik/JHf.ui','Offline',22201191),(23,'Bithi','bithi@gmail.com','$2y$10$.b0tOwIrUCt2ZHD4zG/BSulw.fkGRu2tzb155Ss.Xt5RkCxDX/fB.','Offline',22201180),(24,'Rahman','rahman@gmail.com','$2y$10$oO6zrR1WrYLOhbkDqs2HSOUBWuJ69OFJ0J0Em2nskXi3kEJmkaziu','Offline',NULL),(25,'Prartho','prartho@gmail.com','$2y$10$o.6Q9Mwh5/3th3Y9qHt2y.Y3F1agMK0Zv3ASISiMD/cJi4kIBMD7i','Offline',22201192),(27,'Nusair','nusair@gmail.com','$2y$10$GJwjtsjqt3BlK2F65VYlyufjrSmUeKgbOp.g6czGFs0dLy14CgeX6','Offline',NULL),(28,'Nisha','nisha@gmail.com','$2y$10$aoLr9OHWWW6fMr.sAxh/zOmxCLNb5UUJMNg7foAvEFtBqt8TheI2y','Offline',88767),(29,'Nazmul','nazmul@gmail.com','$2y$10$hIdF4qNG/sWxL5.rqg4CaOfFivbPxZbPYdmk3bcJOczojuiBlPEuq','Offline',14231),(32,'Hasin','hasinishrak2015@gmail.com','$2y$10$QmQH1cz.ktOphZ6o1Tr0xuvQGyW.CCpmD8wnxRxy8gKvtasJTMj4m','Offline',NULL),(34,'Messi','messi@gmail.com','$2y$10$j3PIkHgm.F6WePemSDW6dud9dP6kfQkXJARD0I1DYnAXnF94JmS5e','Online',10101010),(35,'Ronaldo','ronaldo@yahoo.com','$2y$10$8RJztgmaYewJnW835QOOM./cOJVzvTRdZxkZqUNc1O2nMKF.uRo7G','Offline',NULL),(36,'Nafisha','nafisha@gmail.com','$2y$10$tFzpX9OxiwRW29ZR3gvFY.0KdPuQ9BENMMDprv0mSyDuTkKmsCeji','Online',135125),(37,'Shahriar','shahriar@gmail.com','$2y$10$Q0M2Z4pkIXV6ebjKzUl7X.cGTejx3TcbKgIfZDlblQdK3VM/2D7aW','Online',12415653),(38,'Saulgoodman','saulgoodman@gmail.com','$2y$10$2TuMfUn4Yk4.TxzPr5IMOum/d194qwiIXeRi07xFeb7Mh6EfPmZeu','Offline',34355);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -365,4 +368,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-05-14 13:24:49
+-- Dump completed on 2025-05-14 23:30:26

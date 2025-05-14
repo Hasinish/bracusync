@@ -10,6 +10,8 @@ if (!isset($_SESSION['user_id'])) {
 $user_id = $_SESSION['user_id'];
 $error_message = ''; 
 
+if($_SERVER['REQUEST_METHOD'] == 'POST') {
+
 
 $session = $_POST['session']; 
 $year = $_POST['year']; 
@@ -36,7 +38,7 @@ if (mysqli_num_rows($result) > 0) {
     header("Location: /BracuSync/index.php");
     exit();
 }
-
+}
 ?>
 
 
@@ -54,7 +56,7 @@ if (mysqli_num_rows($result) > 0) {
 
         
         <?php if ($error_message): ?>
-            <div class="error-message"><?php echo htmlspecialchars($error_message); ?></div>
+            <div class="error-message"><?= ($error_message); ?></div>
         <?php endif; ?>
 
         <form method="POST" class="info-form">

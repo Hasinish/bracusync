@@ -87,9 +87,9 @@ if (isset($_POST['enroll']) and $selected_course!=="" and $selected_section!==""
             <h1>Routine Maker</h1>
             <div class="section card">
                 <?php if ($enrolled): ?>
-                    <p class="success">✅ Successfully added to routine: <?= htmlspecialchars($selected_course) ?> Section <?= htmlspecialchars($selected_section) ?></p>
+                    <p class="success">✅ Successfully added to routine: <?= ($selected_course) ?> Section <?= ($selected_section) ?></p>
                 <?php elseif (!empty($error)): ?>
-                    <p class="error">❌ <?= htmlspecialchars($error) ?></p>
+                    <p class="error">❌ <?= ($error) ?></p>
                 <?php endif; ?>
 
                 <form method="POST" action="" class="report-form">
@@ -98,8 +98,8 @@ if (isset($_POST['enroll']) and $selected_course!=="" and $selected_section!==""
                     <select id="department" name="department" onchange="this.form.submit()" required>
                         <option value="">-- Select Department --</option>
                         <?php while ($dept = mysqli_fetch_assoc($dept_result)): ?>
-                            <option value="<?= htmlspecialchars($dept['department_prefix']) ?>" <?= $selected_dept == $dept['department_prefix'] ? 'selected' : '' ?>>
-                                <?= htmlspecialchars($dept['department_prefix']) ?>
+                            <option value="<?= ($dept['department_prefix']) ?>" <?= $selected_dept == $dept['department_prefix'] ? 'selected' : '' ?>>
+                                <?= ($dept['department_prefix']) ?>
                             </option>
                         <?php endwhile; ?>
                     </select>
@@ -110,8 +110,8 @@ if (isset($_POST['enroll']) and $selected_course!=="" and $selected_section!==""
                         <select id="course" name="course" onchange="this.form.submit()" required>
                             <option value="">-- Select Course --</option>
                             <?php while ($course = mysqli_fetch_assoc($course_result)): ?>
-                                <option value="<?= htmlspecialchars($course['course_code']) ?>" <?= $selected_course == $course['course_code'] ? 'selected' : '' ?>>
-                                    <?= htmlspecialchars($course['course_code']) ?>
+                                <option value="<?= ($course['course_code']) ?>" <?= $selected_course == $course['course_code'] ? 'selected' : '' ?>>
+                                    <?= ($course['course_code']) ?>
                                 </option>
                             <?php endwhile; ?>
                         </select>
@@ -123,8 +123,8 @@ if (isset($_POST['enroll']) and $selected_course!=="" and $selected_section!==""
                         <select id="section" name="section" onchange="this.form.submit()" required>
                             <option value="">-- Select Section --</option>
                             <?php while ($sec = mysqli_fetch_assoc($section_result)): ?>
-                                <option value="<?= htmlspecialchars($sec['section']) ?>" <?= $selected_section == $sec['section'] ? 'selected' : '' ?>>
-                                    <?= htmlspecialchars($sec['section']) ?>
+                                <option value="<?= ($sec['section']) ?>" <?= $selected_section == $sec['section'] ? 'selected' : '' ?>>
+                                    <?= ($sec['section']) ?>
                                 </option>
                             <?php endwhile; ?>
                         </select>
@@ -144,10 +144,10 @@ if (isset($_POST['enroll']) and $selected_course!=="" and $selected_section!==""
                             <tbody>
                                 <?php while ($row = mysqli_fetch_assoc($details_result)): ?>
                                     <tr>
-                                        <td><?= htmlspecialchars($row['day']) ?></td>
-                                        <td><?= htmlspecialchars(substr($row['start_time'], 0, 5)) ?> - <?= htmlspecialchars(substr($row['end_time'], 0, 5)) ?></td>
-                                        <td><?= htmlspecialchars($row['room']) ?></td>
-                                        <td><?= htmlspecialchars($row['faculty'] ?? 'N/A') ?></td>
+                                        <td><?= ($row['day']) ?></td>
+                                        <td><?= (substr($row['start_time'], 0, 5)) ?> - <?= (substr($row['end_time'], 0, 5)) ?></td>
+                                        <td><?= ($row['room']) ?></td>
+                                        <td><?= ($row['faculty'] ?? 'N/A') ?></td>
                                     </tr>
                                 <?php endwhile; ?>
                             </tbody>

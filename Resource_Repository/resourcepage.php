@@ -54,7 +54,7 @@ if (!isset($_SESSION['user_id'])) {
                 
                 <form method="GET" class="report-form">
                     
-                    <input type="text" id="search" name="search" placeholder="Search by Course Name or Resource Name" value="<?= isset($_GET['search']) ? htmlspecialchars($_GET['search']) : ''; ?>">
+                    <input type="text" id="search" name="search" placeholder="Search by Course Name or Resource Name" value="<?= isset($_GET['search']) ? ($_GET['search']) : ''; ?>">
                     <button type="submit" class="btn">Search</button>
                 </form>
             </div>
@@ -91,11 +91,11 @@ if (!isset($_SESSION['user_id'])) {
                         if (mysqli_num_rows($result) > 0) {
                             while ($row = mysqli_fetch_array($result)) {
                                 echo "<tr>
-                                    <td>" . htmlspecialchars($row['resource_name']) . "</td>
-                                    <td>" . htmlspecialchars($row['course_name']) . "</td>
-                                    <td>" . htmlspecialchars($row['username']) . "</td> 
-                                    <td>" . htmlspecialchars($row['date']) . "</td>
-                                    <td><a href='" . htmlspecialchars($row['resource_link']) . "' target='_blank'>Link</a></td>
+                                    <td>" . ($row['resource_name']) . "</td>
+                                    <td>" . ($row['course_name']) . "</td>
+                                    <td>" . ($row['username']) . "</td> 
+                                    <td>" . ($row['date']) . "</td>
+                                    <td><a href='" . ($row['resource_link']) . "' target='_blank'>Link</a></td>
                                 </tr>";
                             }
                         } else {
