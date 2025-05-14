@@ -122,7 +122,7 @@ CREATE TABLE `enrollments` (
 
 LOCK TABLES `enrollments` WRITE;
 /*!40000 ALTER TABLE `enrollments` DISABLE KEYS */;
-INSERT INTO `enrollments` VALUES (991,26,'2025-05-11'),(1021,26,'2025-05-11'),(1114,15,'2025-05-14'),(1114,17,'2025-05-11'),(1114,26,'2025-05-11'),(1114,29,'2025-05-11');
+INSERT INTO `enrollments` VALUES (381,17,'2025-05-14'),(991,26,'2025-05-11'),(1021,26,'2025-05-11'),(1114,15,'2025-05-14'),(1114,17,'2025-05-11'),(1114,26,'2025-05-11'),(1114,29,'2025-05-11');
 /*!40000 ALTER TABLE `enrollments` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -180,7 +180,7 @@ CREATE TABLE `instructor` (
 
 LOCK TABLES `instructor` WRITE;
 /*!40000 ALTER TABLE `instructor` DISABLE KEYS */;
-INSERT INTO `instructor` VALUES (15,'CSE','Professor','MRT'),(28,'CSE','Professor','IJN'),(29,'CSE','Lecturer','NZU');
+INSERT INTO `instructor` VALUES (15,'CSE','Professor','MRT'),(17,'CSE','Professor','MUF'),(28,'CSE','Professor','IJN'),(29,'CSE','Lecturer','NZU');
 /*!40000 ALTER TABLE `instructor` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -203,7 +203,7 @@ CREATE TABLE `lost_and_found` (
   PRIMARY KEY (`item_id`),
   KEY `LAF` (`user_id`),
   CONSTRAINT `LAF` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -212,7 +212,7 @@ CREATE TABLE `lost_and_found` (
 
 LOCK TABLES `lost_and_found` WRITE;
 /*!40000 ALTER TABLE `lost_and_found` DISABLE KEYS */;
-INSERT INTO `lost_and_found` VALUES (12,'2025-05-07','05:16:00','Umbrella','red umbrella','10B-20C','uploads/1746908180_istockphoto-915788572-612x612.jpg',17),(14,'2025-05-21','23:14:00','Pixel Phone','awdawdawd','Ground Floor near Pond','uploads/1747156328_hq720.jpg',15);
+INSERT INTO `lost_and_found` VALUES (12,'2025-05-07','05:16:00','Umbrella','red umbrella','10B-20C','uploads/1746908180_istockphoto-915788572-612x612.jpg',17),(14,'2025-05-21','23:14:00','Pixel Phone','awdawdawd','Ground Floor near Pond','uploads/1747156328_hq720.jpg',15),(15,'2025-05-07','19:18:00','Id card','ID: 22201180','Ground Floor near Pond','uploads/1747171024_7F0D9184-536C-4A71-AB7A-8509AF31FDA0.jpeg',17),(16,'2025-05-07','13:06:00','Bottle','asdasd','10C-30C','',17);
 /*!40000 ALTER TABLE `lost_and_found` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -234,7 +234,7 @@ CREATE TABLE `message` (
   KEY `receiver user` (`recever_id`),
   CONSTRAINT `receiver user` FOREIGN KEY (`recever_id`) REFERENCES `user` (`user_id`),
   CONSTRAINT `sender user` FOREIGN KEY (`sender_id`) REFERENCES `user` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -243,7 +243,6 @@ CREATE TABLE `message` (
 
 LOCK TABLES `message` WRITE;
 /*!40000 ALTER TABLE `message` DISABLE KEYS */;
-INSERT INTO `message` VALUES (1,29,26,'Hello hasinnn','2025-05-12 00:04:38'),(2,29,26,'how are you?','2025-05-12 00:05:04'),(3,29,26,'Dear Hasin,\r\nNice to see you again.\r\nToday we will have our make-up class. The time is: 4 pm. In case the time changes, I will let you know.','2025-05-12 00:05:44'),(4,26,29,'yes sir','2025-05-12 00:09:04'),(5,26,29,'sir','2025-05-12 00:09:17'),(6,26,29,'will we have a class tomorrow?','2025-05-12 00:09:27'),(8,17,26,'Hello','2025-05-12 00:56:19'),(9,26,17,'project er ki khobor?????','2025-05-12 00:56:31'),(10,15,17,'Hello','2025-05-14 00:08:37'),(11,15,17,'project er ki khobor????','2025-05-14 00:08:43'),(12,17,15,'bhalo na','2025-05-14 00:09:18'),(13,17,15,'bash','2025-05-14 00:09:22');
 /*!40000 ALTER TABLE `message` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -314,8 +313,7 @@ CREATE TABLE `student` (
   `user_id` int(11) NOT NULL AUTO_INCREMENT,
   `batch` varchar(20) NOT NULL,
   `major` varchar(50) NOT NULL,
-  PRIMARY KEY (`user_id`),
-  CONSTRAINT `student user` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`)
+  PRIMARY KEY (`user_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -325,7 +323,6 @@ CREATE TABLE `student` (
 
 LOCK TABLES `student` WRITE;
 /*!40000 ALTER TABLE `student` DISABLE KEYS */;
-INSERT INTO `student` VALUES (17,'Spring-2022','CSE'),(26,'Fall-2022','CSE'),(27,'Summer-2040','CSE'),(31,'Summer-2022','CSE'),(34,'Summer-2022','CSE');
 /*!40000 ALTER TABLE `student` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -355,7 +352,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (15,'Tanim','tanim@gmail.com','$2y$10$EwhLp.YtUCCrtlEbpJKZT.KK2oeF0t8lZ3OSqlHf6EfEP4739ADMS','Online',123123),(17,'Nafi','nafi@gmail.com','$2y$10$FL3OlVvdmEkdS4ojYbbENe0clHTHq5Y9uxil4danS.i7280u6fiqW','Online',22201168),(18,'Namira','namiraabrarhaque@gmail.com','$2y$10$mNyLp9DVq7i3X/knn2VwvescPP8.J99pDRqjpRq/0IbHik/JHf.ui','Offline',NULL),(23,'Bithi','bithi@gmail.com','$2y$10$.b0tOwIrUCt2ZHD4zG/BSulw.fkGRu2tzb155Ss.Xt5RkCxDX/fB.','Offline',NULL),(24,'Rahman','rahman@gmail.com','$2y$10$oO6zrR1WrYLOhbkDqs2HSOUBWuJ69OFJ0J0Em2nskXi3kEJmkaziu','Offline',NULL),(25,'Prartho','prartho@gmail.com','$2y$10$o.6Q9Mwh5/3th3Y9qHt2y.Y3F1agMK0Zv3ASISiMD/cJi4kIBMD7i','Offline',NULL),(27,'Nusair','nusair@gmail.com','$2y$10$GJwjtsjqt3BlK2F65VYlyufjrSmUeKgbOp.g6czGFs0dLy14CgeX6','Offline',44401191),(28,'Nisha','nisha@gmail.com','$2y$10$aoLr9OHWWW6fMr.sAxh/zOmxCLNb5UUJMNg7foAvEFtBqt8TheI2y','Offline',12345),(29,'Nazmul','nazmul@gmail.com','$2y$10$hIdF4qNG/sWxL5.rqg4CaOfFivbPxZbPYdmk3bcJOczojuiBlPEuq','Offline',14231),(31,'Estyak','estyak@gmail.com','$2y$10$jkSJfAJpwDK5X01WBbQvqOcURc/Kuq4tSaXRGRQpJ3RvT2Av5/HPe','Offline',22201181),(32,'Hasin','hasinishrak2015@gmail.com','$2y$10$QmQH1cz.ktOphZ6o1Tr0xuvQGyW.CCpmD8wnxRxy8gKvtasJTMj4m','Offline',NULL),(34,'Messi','messi@gmail.com','$2y$10$j3PIkHgm.F6WePemSDW6dud9dP6kfQkXJARD0I1DYnAXnF94JmS5e','Offline',22201136),(35,'Ronaldo','ronaldo@yahoo.com','$2y$10$8RJztgmaYewJnW835QOOM./cOJVzvTRdZxkZqUNc1O2nMKF.uRo7G','Offline',NULL);
+INSERT INTO `user` VALUES (15,'Tanim','tanim@gmail.com','$2y$10$EwhLp.YtUCCrtlEbpJKZT.KK2oeF0t8lZ3OSqlHf6EfEP4739ADMS','Online',32341),(17,'Nafi','nafi@gmail.com','$2y$10$FL3OlVvdmEkdS4ojYbbENe0clHTHq5Y9uxil4danS.i7280u6fiqW','Online',12345),(18,'Namira','namiraabrarhaque@gmail.com','$2y$10$mNyLp9DVq7i3X/knn2VwvescPP8.J99pDRqjpRq/0IbHik/JHf.ui','Offline',22201191),(23,'Bithi','bithi@gmail.com','$2y$10$.b0tOwIrUCt2ZHD4zG/BSulw.fkGRu2tzb155Ss.Xt5RkCxDX/fB.','Offline',22201180),(24,'Rahman','rahman@gmail.com','$2y$10$oO6zrR1WrYLOhbkDqs2HSOUBWuJ69OFJ0J0Em2nskXi3kEJmkaziu','Offline',NULL),(25,'Prartho','prartho@gmail.com','$2y$10$o.6Q9Mwh5/3th3Y9qHt2y.Y3F1agMK0Zv3ASISiMD/cJi4kIBMD7i','Offline',22201192),(27,'Nusair','nusair@gmail.com','$2y$10$GJwjtsjqt3BlK2F65VYlyufjrSmUeKgbOp.g6czGFs0dLy14CgeX6','Offline',NULL),(28,'Nisha','nisha@gmail.com','$2y$10$aoLr9OHWWW6fMr.sAxh/zOmxCLNb5UUJMNg7foAvEFtBqt8TheI2y','Offline',88767),(29,'Nazmul','nazmul@gmail.com','$2y$10$hIdF4qNG/sWxL5.rqg4CaOfFivbPxZbPYdmk3bcJOczojuiBlPEuq','Online',14231),(32,'Hasin','hasinishrak2015@gmail.com','$2y$10$QmQH1cz.ktOphZ6o1Tr0xuvQGyW.CCpmD8wnxRxy8gKvtasJTMj4m','Offline',NULL),(34,'Messi','messi@gmail.com','$2y$10$j3PIkHgm.F6WePemSDW6dud9dP6kfQkXJARD0I1DYnAXnF94JmS5e','Offline',NULL),(35,'Ronaldo','ronaldo@yahoo.com','$2y$10$8RJztgmaYewJnW835QOOM./cOJVzvTRdZxkZqUNc1O2nMKF.uRo7G','Offline',NULL);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -368,4 +365,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-05-14  0:13:42
+-- Dump completed on 2025-05-14 13:24:49
