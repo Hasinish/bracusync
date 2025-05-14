@@ -1,0 +1,194 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background: url('https://ceramicbangladesh.com/wp-content/uploads/2025/02/Asset-14_13_11zon.webp') no-repeat center/cover fixed;
+    position: relative;
+    color: #fff;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(5px);
+    z-index: -1;
+}
+
+/* Sidebar Styling */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 250px;
+    height: 100vh;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-right: 2px solid #0ef;
+    padding: 20px;
+    box-shadow: 0 0 20px rgba(0, 238, 255, 0.3);
+    z-index: 100;
+    animation: slideInLeft 0.5s ease-out;
+}
+
+.sidebar h2 {
+    font-size: 1.5rem;
+    color: #fff;
+    text-align: center;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.sidebar h2::after {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 2px;
+    background: #0ef;
+    margin: 10px auto;
+}
+
+/* User List Styling */
+.user-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.user-list li {
+    border-radius: 5px;
+    transition: background 0.3s ease;
+}
+
+.user-list li a {
+    display: block;
+    padding: 10px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 400;
+    transition: color 0.3s ease, background 0.3s ease;
+}
+
+.user-list li a:hover {
+    color: #0ef;
+    background: rgba(0, 238, 255, 0.1);
+}
+
+.user-list li.active a {
+    background: #0ef;
+    color: #081b29;
+    font-weight: 500;
+    border-radius: 5px;
+}
+
+/* Navigation (if added) */
+.button-group {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 15px 0;
+    background: rgba(0, 0, 0, 0.6);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.button-group a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 8px 16px;
+    border-radius: 20px;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.button-group a:hover {
+    background: #0ef;
+    color: #081b29;
+}
+
+.button-group a.active {
+    border-bottom: 2px solid #0ef;
+    color: #0ef;
+}
+
+.button-group a::before {
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    margin-right: 8px;
+    display: inline-block;
+}
+
+.button-group a[href="../group_post/group_select.php"]::before {
+    content: '\f0c0'; /* Users icon */
+}
+
+.button-group a[href="../messaging/messages.php"]::before {
+    content: '\f075'; /* Comment icon */
+}
+
+.button-group a[href="../course_enrollment/select_courses.php"]::before {
+    content: '\f02d'; /* Book icon */
+}
+
+.button-group a[href="edit_profile.php"]::before {
+    content: '\f044'; /* Edit icon */
+}
+
+/* Animations */
+@keyframes slideInLeft {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 200px;
+        padding: 15px;
+    }
+
+    .sidebar h2 {
+        font-size: 1.3rem;
+    }
+
+    .user-list li a {
+        font-size: 0.9rem;
+        padding: 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: static;
+        border-right: none;
+        border-bottom: 2px solid #0ef;
+    }
+
+    .user-list {
+        gap: 3px;
+    }
+}

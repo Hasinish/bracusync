@@ -27,6 +27,7 @@ if (!isset($_SESSION['user_id'])) {
             <a href="Profile_dashboard/profile.php">Profile</a>
             <a href="lost_and_found/lost_and_foundpage.php">Lost And Found</a>
             <a href="Resource_Repository/resourcepage.php">Resource Repository</a>
+            <a href="search_user.php">Search User</a>
             <a href="logout.php">Logout</a>
         </nav>  
 
